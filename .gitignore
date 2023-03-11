@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Cmake Files
+cmake-build-debug
+
+# Export Files
+report_file/*
