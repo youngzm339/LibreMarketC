@@ -7,6 +7,12 @@
 
 #include "sqlite/sqlite3.h"
 
+struct Product {
+    char id[99];
+    char name[99];
+    double price;
+};
+
 static int callback(void *NotUsed, int argc, char **argv, char **azColName);
 
 int connectDatabase();
@@ -15,10 +21,18 @@ int createTable();
 
 int insertTable(char *id, char *name, double price);
 
-int selectTable();
+char *getTableName(char *id);
 
-int updateTable();
+double getTablePrice(char *id);
 
-int deleteTable();
+int selectTable(char *id);
+
+struct Product *queryTable(char *id);
+
+int updateTableName(char *id, char *name);
+
+int updateTablePrice(char *id, double price);
+
+int deleteTable(char *id);
 
 #endif //LIBREMARKETC_SQLITE_API_H

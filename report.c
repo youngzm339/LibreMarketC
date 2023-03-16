@@ -4,8 +4,7 @@
 
 #include "report.h"
 
-int enterReport() {
-    return -2;
+void enterReport() {
 }
 
 int exportReport() {

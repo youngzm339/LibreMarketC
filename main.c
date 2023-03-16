@@ -14,36 +14,14 @@ int main(int argc, char *argv[]) {
     }
 
 //    Say hello to my users
-    printf("\n%s\n", "-----LibreMarketC-----");
-    printf("%s\n", "一个开源免费的商场销售系统");
-    printf("%s\n", "Developed by YoungZM");
-    printf("%s\n", "Opensoure at https://github.com/youngzm339/LibreMarketC");
-    printf("%s\n", "-----LibreMarketC-----");
+    fprintf(stdout, "\n%s\n", "-----LibreMarketC-----");
+    fprintf(stdout, "%s\n", "一个开源免费的商场销售系统");
+    fprintf(stdout, "%s\n", "Developed by YoungZM");
+    fprintf(stdout, "%s\n", "Opensoure at https://github.com/youngzm339/LibreMarketC");
+    fprintf(stdout, "%s\n", "-----LibreMarketC-----");
 
-//    Enter the menu interface and determine the exit status
-    int error_code;
-    do {
-        error_code = 0;
-        error_code = enterMenu();
-        if (error_code == 0) {
-            printf("程序已正常退出");
-            return 0;
-        } else if (error_code != 1) {
-            fprintf(stderr, "\n%s:%d\n", "程序异常退出", error_code);
-            switch (error_code) {
-                case -1:
-                    fprintf(stderr, "\n商品销售功能模块异常\n");
-                    break;
-                case -2:
-                    fprintf(stderr, "\n商业报表功能模块异常\n");
-                    break;
-                case -3:
-                    fprintf(stderr, "\n商品管理功能模块异常\n");
-                    break;
-                default:
-                    fprintf(stderr, "\n未知异常\n");
-            }
-        }
-    } while (error_code == 1);
-    return error_code;
+//    Enter the menu interface
+    while (1) {
+        enterMenu();
+    }
 }

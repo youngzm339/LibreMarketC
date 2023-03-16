@@ -5,7 +5,7 @@
 #ifndef LIBREMARKETC_PRODUCT_H
 #define LIBREMARKETC_PRODUCT_H
 
-int enterProduct();
+void enterProduct();
 
 int queryProduct();
 
@@ -14,5 +14,7 @@ int addProduct();
 int delProduct();
 
 int editProduct();
+
+int initProduct();
 
 #endif //LIBREMARKETC_PRODUCT_H

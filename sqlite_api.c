@@ -3,15 +3,23 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "sqlite_api.h"
 #include "sqlite/sqlite3.h"
 
+char sql_tmp_id[99];
+char sql_tmp_name[99];
+char sql_tmp_price[99];
+
 static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
-    int i;
-    for (i = 0; i < argc; i++) {
-        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
-    }
-    printf("\n");
+//    int i;
+//    for (i = 0; i < argc; i++) {
+//        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+//    }
+//    printf("\n");
+    strcpy(sql_tmp_id, argv[0]);
+    strcpy(sql_tmp_name, argv[1]);
+    strcpy(sql_tmp_price, argv[2]);
     return 0;
 }
 
@@ -25,7 +33,7 @@ int connectDatabase() {
         fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
         exit(0);
     } else {
-        fprintf(stderr, "Opened database successfully\n");
+        // fprintf(stderr, "Opened database successfully\n");
     }
     sqlite3_close(db);
     return 0;
@@ -47,7 +55,7 @@ int createTable() {
     }
 
     /* Create SQL statement */
-    sql = "CREATE TABLE COMPANY("  \
+    sql = "CREATE TABLE PRODUCT("  \
          "ID TEXT PRIMARY KEY     NOT NULL," \
          "NAME           TEXT    NOT NULL," \
          "PRICE         REAL );";
@@ -76,11 +84,11 @@ int insertTable(char *id, char *name, double price) {
         fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
         exit(0);
     } else {
-        fprintf(stderr, "Opened database successfully\n");
+        // fprintf(stderr, "Opened database successfully\n");
     }
 
     /* Create SQL statement */
-    sprintf(sql, "INSERT INTO COMPANY (ID,NAME,PRICE)VALUES ('%s','%s', %lf );", id, name, price);
+    sprintf(sql, "INSERT INTO PRODUCT (ID,NAME,PRICE) VALUES ('%s','%s', %lf );", id, name, price);
 
     /* Execute SQL statement */
     rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
@@ -94,11 +102,23 @@ int insertTable(char *id, char *name, double price) {
     return 0;
 }
 
-int selectTable() {
+char *getTableName(char id[99]) {
+    selectTable(id);
+    return sql_tmp_id;
+}
+
+double getTablePrice(char id[99]) {
+    selectTable(id);
+    double table_price;
+    sscanf("%lf", &table_price, sql_tmp_price);
+    return table_price;
+}
+
+int selectTable(char id[99]) {
     sqlite3 *db;
     char *zErrMsg = 0;
     int rc;
-    char *sql;
+    char sql[999];
     const char *data = "Callback function called";
 
     /* Open database */
@@ -107,11 +127,11 @@ int selectTable() {
         fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
         exit(0);
     } else {
-        fprintf(stderr, "Opened database successfully\n");
+        // fprintf(stderr, "Opened database successfully\n");
     }
 
     /* Create SQL statement */
-    sql = "SELECT * from COMPANY";
+    sprintf(sql, "SELECT * FROM PRODUCT WHERE ID = '%s';", id);
 
     /* Execute SQL statement */
     rc = sqlite3_exec(db, sql, callback, (void *) data, &zErrMsg);
@@ -119,18 +139,18 @@ int selectTable() {
         fprintf(stderr, "SQL error: %s\n", zErrMsg);
         sqlite3_free(zErrMsg);
     } else {
-        fprintf(stdout, "Operation done successfully\n");
+        // fprintf(stdout, "Operation done successfully\n");
     }
     sqlite3_close(db);
     return 0;
 
 }
 
-int updateTable() {
+struct Product *queryTable(char *id) {
     sqlite3 *db;
     char *zErrMsg = 0;
     int rc;
-    char *sql;
+    char sql[999];
     const char *data = "Callback function called";
 
     /* Open database */
@@ -139,12 +159,11 @@ int updateTable() {
         fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
         exit(0);
     } else {
-        fprintf(stderr, "Opened database successfully\n");
+        // fprintf(stderr, "Opened database successfully\n");
     }
 
-    /* Create merged SQL statement */
-    sql = "UPDATE COMPANY set SALARY = 25000.00 where ID=1; " \
-         "SELECT * from COMPANY";
+    /* Create SQL statement */
+    sprintf(sql, "SELECT * FROM PRODUCT WHERE ID = '%s';", id);
 
     /* Execute SQL statement */
     rc = sqlite3_exec(db, sql, callback, (void *) data, &zErrMsg);
@@ -152,17 +171,23 @@ int updateTable() {
         fprintf(stderr, "SQL error: %s\n", zErrMsg);
         sqlite3_free(zErrMsg);
     } else {
-        fprintf(stdout, "Operation done successfully\n");
+        // fprintf(stdout, "Operation done successfully\n");
     }
     sqlite3_close(db);
-    return 0;
+
+    struct Product *tmp_product = malloc(sizeof(struct Product));
+    strcpy(tmp_product->id, sql_tmp_id);
+    strcpy(tmp_product->name, sql_tmp_name);
+    sscanf(sql_tmp_price, "%lf", &tmp_product->price);
+    return tmp_product;
+
 }
 
-int deleteTable() {
+int updateTableName(char *id, char *name) {
     sqlite3 *db;
     char *zErrMsg = 0;
     int rc;
-    char *sql;
+    char sql[999];
     const char *data = "Callback function called";
 
     /* Open database */
@@ -171,12 +196,11 @@ int deleteTable() {
         fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
         exit(0);
     } else {
-        fprintf(stderr, "Opened database successfully\n");
+        // fprintf(stderr, "Opened database successfully\n");
     }
 
     /* Create merged SQL statement */
-    sql = "DELETE from COMPANY where ID=2; " \
-         "SELECT * from COMPANY";
+    sprintf(sql, "UPDATE PRODUCT set NAME = '%s' where ID='%s'", name, id);
 
     /* Execute SQL statement */
     rc = sqlite3_exec(db, sql, callback, (void *) data, &zErrMsg);
@@ -184,7 +208,69 @@ int deleteTable() {
         fprintf(stderr, "SQL error: %s\n", zErrMsg);
         sqlite3_free(zErrMsg);
     } else {
-        fprintf(stdout, "Operation done successfully\n");
+        // fprintf(stdout, "Operation done successfully\n");
+    }
+    sqlite3_close(db);
+    return 0;
+}
+
+int updateTablePrice(char *id, double price) {
+    sqlite3 *db;
+    char *zErrMsg = 0;
+    int rc;
+    char sql[999];
+    const char *data = "Callback function called";
+
+    /* Open database */
+    rc = sqlite3_open("LibreMarketC.db", &db);
+    if (rc) {
+        fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+        exit(0);
+    } else {
+        // fprintf(stderr, "Opened database successfully\n");
+    }
+
+    /* Create merged SQL statement */
+    sprintf(sql, "UPDATE PRODUCT set PRICE = %lf where ID='%s'", price, id);
+
+    /* Execute SQL statement */
+    rc = sqlite3_exec(db, sql, callback, (void *) data, &zErrMsg);
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        sqlite3_free(zErrMsg);
+    } else {
+        // fprintf(stdout, "Operation done successfully\n");
+    }
+    sqlite3_close(db);
+    return 0;
+}
+
+int deleteTable(char *id) {
+    sqlite3 *db;
+    char *zErrMsg = 0;
+    int rc;
+    char sql[999];
+    const char *data = "Callback function called";
+
+    /* Open database */
+    rc = sqlite3_open("LibreMarketC.db", &db);
+    if (rc) {
+        fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+        exit(0);
+    } else {
+        // fprintf(stderr, "Opened database successfully\n");
+    }
+
+    /* Create merged SQL statement */
+    sprintf(sql, "DELETE from PRODUCT where ID='%s'", id);
+
+    /* Execute SQL statement */
+    rc = sqlite3_exec(db, sql, callback, (void *) data, &zErrMsg);
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        sqlite3_free(zErrMsg);
+    } else {
+        // fprintf(stdout, "Operation done successfully\n");
     }
     sqlite3_close(db);
     return 0;

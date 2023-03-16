@@ -5,6 +5,6 @@
 #ifndef LIBREMARKETC_MENU_H
 #define LIBREMARKETC_MENU_H
 
-int enterMenu();
+void enterMenu();
 
 #endif //LIBREMARKETC_MENU_H

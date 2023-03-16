@@ -5,7 +5,7 @@
 #ifndef LIBREMARKETC_REPORT_H
 #define LIBREMARKETC_REPORT_H
 
-int enterReport();
+void enterReport();
 
 int exportReport();
 

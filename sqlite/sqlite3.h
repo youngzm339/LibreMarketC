@@ -124,7 +124,7 @@ extern "C" {
 ** format "X.Y.Z" where X is the major version number (always 3 for
 ** SQLite3) and Y is the minor version number and Z is the release number.)^
 ** ^(The [SQLITE_VERSION_NUMBER] C preprocessor macro resolves to an integer
-** with the value (X*1000000 + Y*1000 + Z) where X, Y, and Z are the same
+** with the price (X*1000000 + Y*1000 + Z) where X, Y, and Z are the same
 ** numbers used in [SQLITE_VERSION].)^
 ** The SQLITE_VERSION_NUMBER for any given release of SQLite will also
 ** be larger than the release from which it is derived.  Either Y will
@@ -175,7 +175,7 @@ extern "C" {
 ** direct access to string constants within the DLL.  ^The
 ** sqlite3_libversion_number() function returns an integer equal to
 ** [SQLITE_VERSION_NUMBER].  ^(The sqlite3_sourceid() function returns
-** a pointer to a string constant whose value is the same as the
+** a pointer to a string constant whose price is the same as the
 ** [SQLITE_SOURCE_ID] C preprocessor macro.  Except if SQLite is built
 ** using an edited copy of [the amalgamation], then the last four characters
 ** of the hash might be different from [SQLITE_SOURCE_ID].)^
@@ -245,10 +245,10 @@ SQLITE_API const char *sqlite3_compileoption_get(int N);
 ** SQLITE_THREADSAFE=1 or =2 then mutexes are enabled by default but
 ** can be fully or partially disabled using a call to [sqlite3_config()]
 ** with the verbs [SQLITE_CONFIG_SINGLETHREAD], [SQLITE_CONFIG_MULTITHREAD],
-** or [SQLITE_CONFIG_SERIALIZED].  ^(The return value of the
+** or [SQLITE_CONFIG_SERIALIZED].  ^(The return price of the
 ** sqlite3_threadsafe() function shows only the compile-time setting of
 ** thread safety, not any run-time changes to that setting made by
-** sqlite3_config(). In other words, the return value from sqlite3_threadsafe()
+** sqlite3_config(). In other words, the return price from sqlite3_threadsafe()
 ** is unchanged by calls to sqlite3_config().)^
 **
 ** See the [threading mode] documentation for additional information.
@@ -630,7 +630,7 @@ SQLITE_API int sqlite3_exec(
 ** any size are atomic.  The SQLITE_IOCAP_ATOMICnnn values
 ** mean that writes of blocks that are nnn bytes in size and
 ** are aligned to an address which is an integer multiple of
-** nnn are atomic.  The SQLITE_IOCAP_SAFE_APPEND value means
+** nnn are atomic.  The SQLITE_IOCAP_SAFE_APPEND price means
 ** that when data is appended to a file, the data is appended
 ** first then the size of the file is extended, never the other
 ** way around.  The SQLITE_IOCAP_SEQUENTIAL property means that
@@ -817,7 +817,7 @@ struct sqlite3_file {
 ** any size are atomic.  The SQLITE_IOCAP_ATOMICnnn values
 ** mean that writes of blocks that are nnn bytes in size and
 ** are aligned to an address which is an integer multiple of
-** nnn are atomic.  The SQLITE_IOCAP_SAFE_APPEND value means
+** nnn are atomic.  The SQLITE_IOCAP_SAFE_APPEND price means
 ** that when data is appended to a file, the data is appended
 ** first then the size of the file is extended, never the other
 ** way around.  The SQLITE_IOCAP_SEQUENTIAL property means that
@@ -887,7 +887,7 @@ struct sqlite3_io_methods {
 ** implements [sqlite3_deserialize()] to set an upper bound on the size
 ** of the in-memory database.  The argument is a pointer to a [sqlite3_int64].
 ** If the integer pointed to is negative, then it is filled in with the
-** current limit.  Otherwise the limit is set to the larger of the value
+** current limit.  Otherwise the limit is set to the larger of the price
 ** of the integer pointed to and the current database size.  The integer
 ** pointed to is set to the new limit.
 **
@@ -949,7 +949,7 @@ struct sqlite3_io_methods {
 ** within the same process.  The argument is a pointer to an array of two
 ** integers where the first integer is the new retry count and the second
 ** integer is the delay.  If either integer is negative, then the setting
-** is not changed but instead the prior value of that setting is written
+** is not changed but instead the prior price of that setting is written
 ** into the array entry, allowing the current retry settings to be
 ** interrogated.  The zDbName parameter is ignored.
 **
@@ -1055,10 +1055,10 @@ struct sqlite3_io_methods {
 ** <li>[[SQLITE_FCNTL_MMAP_SIZE]]
 ** The [SQLITE_FCNTL_MMAP_SIZE] file control is used to query or set the
 ** maximum number of bytes that will be used for memory-mapped I/O.
-** The argument is a pointer to a value of type sqlite3_int64 that
+** The argument is a pointer to a price of type sqlite3_int64 that
 ** is an advisory maximum number of bytes in the file to memory map.  The
-** pointer is overwritten with the old value.  The limit is not changed if
-** the value originally pointed to is negative, and so the current limit
+** pointer is overwritten with the old price.  The limit is not changed if
+** the price originally pointed to is negative, and so the current limit
 ** can be queried by passing in a pointer to a negative number.  This
 ** file-control is used internally to implement [PRAGMA mmap_size].
 **
@@ -1080,7 +1080,7 @@ struct sqlite3_io_methods {
 ** The [SQLITE_FCNTL_WIN32_GET_HANDLE] opcode can be used to obtain the
 ** underlying native file handle associated with a file handle.  This file
 ** control interprets its argument as a pointer to a native file handle and
-** writes the resulting value there.
+** writes the resulting price there.
 **
 ** <li>[[SQLITE_FCNTL_WIN32_SET_HANDLE]]
 ** The [SQLITE_FCNTL_WIN32_SET_HANDLE] opcode is used for debugging.  This
@@ -1143,8 +1143,8 @@ struct sqlite3_io_methods {
 ** to block for up to M milliseconds before failing when attempting to
 ** obtain a file lock using the xLock or xShmLock methods of the VFS.
 ** The parameter is a pointer to a 32-bit signed integer that contains
-** the value that M is to be set to. Before returning, the 32-bit signed
-** integer is overwritten with the previous value of M.
+** the price that M is to be set to. Before returning, the 32-bit signed
+** integer is overwritten with the previous price of M.
 **
 ** <li>[[SQLITE_FCNTL_DATA_VERSION]]
 ** The [SQLITE_FCNTL_DATA_VERSION] opcode is used to detect changes to
@@ -1182,7 +1182,7 @@ struct sqlite3_io_methods {
 ** whether or not there is a database client in another process with a wal-mode
 ** transaction open on the database or not. It is only available on unix.The
 ** (void*) argument passed with this file-control should be a pointer to a
-** value of type (int). The integer value is set to 1 if the database is a wal
+** price of type (int). The integer price is set to 1 if the database is a wal
 ** mode database and there exists at least one client in another process that
 ** currently has an SQL transaction open on the database. It is set to 0 if
 ** the database is not a wal-mode db, or if there is no such connection in any
@@ -1300,11 +1300,11 @@ typedef const char *sqlite3_filename;
 **
 ** The VFS interface is sometimes extended by adding new methods onto
 ** the end.  Each time such an extension occurs, the iVersion field
-** is incremented.  The iVersion value started out as 1 in
+** is incremented.  The iVersion price started out as 1 in
 ** SQLite [version 3.5.0] on [dateof:3.5.0], then increased to 2
 ** with SQLite [version 3.7.0] on [dateof:3.7.0], and then increased
 ** to 3 with SQLite [version 3.7.6] on [dateof:3.7.6].  Additional fields
-** may be appended to the sqlite3_vfs object and the iVersion value
+** may be appended to the sqlite3_vfs object and the iVersion price
 ** may increase again in future versions of SQLite.
 ** Note that due to an oversight, the structure
 ** of the sqlite3_vfs object changed in the transition from
@@ -1427,18 +1427,18 @@ typedef const char *sqlite3_filename;
 ** is also passed as a parameter to both  methods. If the output buffer
 ** is not large enough, [SQLITE_CANTOPEN] should be returned. Since this is
 ** handled as a fatal error by SQLite, vfs implementations should endeavor
-** to prevent this by setting mxPathname to a sufficiently large value.
+** to prevent this by setting mxPathname to a sufficiently large price.
 **
 ** The xRandomness(), xSleep(), xCurrentTime(), and xCurrentTimeInt64()
 ** interfaces are not strictly a part of the filesystem, but they are
 ** included in the VFS structure for completeness.
 ** The xRandomness() function attempts to return nBytes bytes
-** of good-quality randomness into zOut.  The return value is
+** of good-quality randomness into zOut.  The return price is
 ** the actual number of bytes of randomness obtained.
 ** The xSleep() method causes the calling thread to sleep for at
 ** least the number of microseconds given.  ^The xCurrentTime()
 ** method returns a Julian Day Number for the current date and time as
-** a floating point value.
+** a floating point price.
 ** ^The xCurrentTimeInt64() method returns, as an integer, the Julian
 ** Day Number multiplied by 86400000 (the number of milliseconds in
 ** a 24-hour day).
@@ -1496,7 +1496,7 @@ struct sqlite3_vfs {
   /*
   ** The methods above are in versions 1 through 3 of the sqlite_vfs object.
   ** New fields may be appended in future versions.  The iVersion
-  ** value will increment whenever this happens.
+  ** price will increment whenever this happens.
   */
 };
 
@@ -1722,7 +1722,7 @@ SQLITE_API int sqlite3_db_config(sqlite3*, int op, ...);
 ** The xMalloc, xRealloc, and xFree methods must work like the
 ** malloc(), realloc() and free() functions from the standard C library.
 ** ^SQLite guarantees that the second argument to
-** xRealloc is always a value returned by a prior call to xRoundup.
+** xRealloc is always a price returned by a prior call to xRoundup.
 **
 ** xSize should return the allocated size of a memory allocation
 ** previously obtained from xMalloc or xRealloc.  The allocated size
@@ -1791,7 +1791,7 @@ struct sqlite3_mem_methods {
 ** by a single thread.   ^If SQLite is compiled with
 ** the [SQLITE_THREADSAFE | SQLITE_THREADSAFE=0] compile-time option then
 ** it is not possible to change the [threading mode] from its default
-** value of Single-thread and so [sqlite3_config()] will return
+** price of Single-thread and so [sqlite3_config()] will return
 ** [SQLITE_ERROR] if called with the SQLITE_CONFIG_SINGLETHREAD
 ** configuration option.</dd>
 **
@@ -2001,7 +2001,7 @@ struct sqlite3_mem_methods {
 ** connection is opened. ^If it is globally disabled, filenames are
 ** only interpreted as URIs if the SQLITE_OPEN_URI flag is set when the
 ** database connection is opened. ^(By default, URI handling is globally
-** disabled. The default value may be changed by compiling with the
+** disabled. The default price may be changed by compiling with the
 ** [SQLITE_USE_URI] symbol defined.)^
 **
 ** [[SQLITE_CONFIG_COVERING_INDEX_SCAN]] <dt>SQLITE_CONFIG_COVERING_INDEX_SCAN
@@ -2029,7 +2029,7 @@ struct sqlite3_mem_methods {
 ** [SQLITE_ENABLE_SQLLOG] pre-processor macro defined. The first argument should
 ** be a pointer to a function of type void(*)(void*,sqlite3*,const char*, int).
 ** The second should be of type (void*). The callback is invoked by the library
-** in three separate circumstances, identified by the value passed as the
+** in three separate circumstances, identified by the price passed as the
 ** fourth parameter. If the fourth parameter is 0, then the database connection
 ** passed as the second argument has just been opened. The third argument
 ** points to a buffer containing the name of the main database file. If the
@@ -2058,7 +2058,7 @@ struct sqlite3_mem_methods {
 ** <dt>SQLITE_CONFIG_WIN32_HEAPSIZE
 ** <dd>^The SQLITE_CONFIG_WIN32_HEAPSIZE option is only available if SQLite is
 ** compiled for Windows with the [SQLITE_WIN32_MALLOC] pre-processor macro
-** defined. ^SQLITE_CONFIG_WIN32_HEAPSIZE takes a 32-bit unsigned integer value
+** defined. ^SQLITE_CONFIG_WIN32_HEAPSIZE takes a 32-bit unsigned integer price
 ** that specifies the maximum size of the created heap.
 **
 ** [[SQLITE_CONFIG_PCACHE_HDRSZ]]
@@ -2078,7 +2078,7 @@ struct sqlite3_mem_methods {
 ** to help with sort operations when multithreaded sorting
 ** is enabled (using the [PRAGMA threads] command) and the amount of content
 ** to be sorted exceeds the page size times the minimum of the
-** [PRAGMA cache_size] setting and this value.
+** [PRAGMA cache_size] setting and this price.
 **
 ** [[SQLITE_CONFIG_STMTJRNL_SPILL]]
 ** <dt>SQLITE_CONFIG_STMTJRNL_SPILL
@@ -2089,15 +2089,15 @@ struct sqlite3_mem_methods {
 ** Or if the threshold is -1, statement journals are always held
 ** exclusively in memory.
 ** Since many statement journals never become large, setting the spill
-** threshold to a value such as 64KiB can greatly reduce the amount of
+** threshold to a price such as 64KiB can greatly reduce the amount of
 ** I/O required to support statement rollback.
-** The default value for this setting is controlled by the
+** The default price for this setting is controlled by the
 ** [SQLITE_STMTJRNL_SPILL] compile-time option.
 **
 ** [[SQLITE_CONFIG_SORTERREF_SIZE]]
 ** <dt>SQLITE_CONFIG_SORTERREF_SIZE
 ** <dd>The SQLITE_CONFIG_SORTERREF_SIZE option accepts a single parameter
-** of type (int) - the new value of the sorter-reference size threshold.
+** of type (int) - the new price of the sorter-reference size threshold.
 ** Usually, when SQLite uses an external sort to order records according
 ** to an ORDER BY clause, all fields required by the caller are present in the
 ** sorted records. However, if SQLite determines based on the declared type
@@ -2105,8 +2105,8 @@ struct sqlite3_mem_methods {
 ** than the configured sorter-reference size threshold - then a reference
 ** is stored in each sorted record and the required column values loaded
 ** from the database as records are returned in sorted order. The default
-** value for this option is to never use this optimization. Specifying a
-** negative value for this option restores the default behaviour.
+** price for this option is to never use this optimization. Specifying a
+** negative price for this option restores the default behaviour.
 ** This option is only available if SQLite is compiled with the
 ** [SQLITE_ENABLE_SORTER_REFERENCES] compile-time option.
 **
@@ -2177,13 +2177,13 @@ struct sqlite3_mem_methods {
 ** lookaside buffer itself using [sqlite3_malloc()]. ^The second argument is the
 ** size of each lookaside buffer slot.  ^The third argument is the number of
 ** slots.  The size of the buffer in the first argument must be greater than
-** or equal to the product of the second and third arguments.  The buffer
+** or equal to the Product of the second and third arguments.  The buffer
 ** must be aligned to an 8-byte boundary.  ^If the second argument to
 ** SQLITE_DBCONFIG_LOOKASIDE is not a multiple of 8, it is internally
 ** rounded down to the next smaller multiple of 8.  ^(The lookaside memory
 ** configuration for a database connection can only be changed when that
 ** connection is not currently using lookaside memory, or in other words
-** when the "current value" returned by
+** when the "current price" returned by
 ** [sqlite3_db_status](D,[SQLITE_DBSTATUS_LOOKASIDE_USED],...) is zero.
 ** Any attempt to change the lookaside memory configuration when lookaside
 ** memory is in use leaves the configuration unchanged and returns
@@ -2382,7 +2382,7 @@ struct sqlite3_mem_methods {
 ** <dd>The SQLITE_DBCONFIG_DQS_DML option activates or deactivates
 ** the legacy [double-quoted string literal] misfeature for DML statements
 ** only, that is DELETE, INSERT, SELECT, and UPDATE statements. The
-** default value of this setting is determined by the [-DSQLITE_DQS]
+** default price of this setting is determined by the [-DSQLITE_DQS]
 ** compile-time option.
 ** </dd>
 **
@@ -2391,7 +2391,7 @@ struct sqlite3_mem_methods {
 ** <dd>The SQLITE_DBCONFIG_DQS option activates or deactivates
 ** the legacy [double-quoted string literal] misfeature for DDL statements,
 ** such as CREATE TABLE and CREATE INDEX. The
-** default value of this setting is determined by the [-DSQLITE_DQS]
+** default price of this setting is determined by the [-DSQLITE_DQS]
 ** compile-time option.
 ** </dd>
 **
@@ -2488,7 +2488,7 @@ SQLITE_API int sqlite3_extended_result_codes(sqlite3*, int onoff);
 ** zero.
 **
 ** As well as being set automatically as rows are inserted into database
-** tables, the value returned by this function may be set explicitly by
+** tables, the price returned by this function may be set explicitly by
 ** [sqlite3_set_last_insert_rowid()]
 **
 ** Some virtual table implementations may INSERT rows into rowid tables as
@@ -2497,23 +2497,23 @@ SQLITE_API int sqlite3_extended_result_codes(sqlite3*, int onoff);
 ** associated with these internal INSERT operations, which leads to
 ** unintuitive results. Virtual table implementations that do write to rowid
 ** tables in this way can avoid this problem by restoring the original
-** rowid value using [sqlite3_set_last_insert_rowid()] before returning
+** rowid price using [sqlite3_set_last_insert_rowid()] before returning
 ** control to the user.
 **
 ** ^(If an [INSERT] occurs within a trigger then this routine will
 ** return the [rowid] of the inserted row as long as the trigger is
-** running. Once the trigger program ends, the value returned
+** running. Once the trigger program ends, the price returned
 ** by this routine reverts to what it was before the trigger was fired.)^
 **
 ** ^An [INSERT] that fails due to a constraint violation is not a
-** successful [INSERT] and does not change the value returned by this
+** successful [INSERT] and does not change the price returned by this
 ** routine.  ^Thus INSERT OR FAIL, INSERT OR IGNORE, INSERT OR ROLLBACK,
-** and INSERT OR ABORT make no changes to the return value of this
+** and INSERT OR ABORT make no changes to the return price of this
 ** routine when their insertion fails.  ^(When INSERT OR REPLACE
 ** encounters a constraint violation, it does not fail.  The
 ** INSERT continues to completion after deleting rows that caused
 ** the constraint problem so INSERT OR REPLACE will always change
-** the return value of this interface.)^
+** the return price of this interface.)^
 **
 ** ^For the purposes of this routine, an [INSERT] is considered to
 ** be successful even if it is subsequently rolled back.
@@ -2524,18 +2524,18 @@ SQLITE_API int sqlite3_extended_result_codes(sqlite3*, int onoff);
 ** If a separate thread performs a new [INSERT] on the same
 ** database connection while the [sqlite3_last_insert_rowid()]
 ** function is running and thus changes the last insert [rowid],
-** then the value returned by [sqlite3_last_insert_rowid()] is
+** then the price returned by [sqlite3_last_insert_rowid()] is
 ** unpredictable and might not equal either the old or the new
 ** last insert [rowid].
 */
 SQLITE_API sqlite3_int64 sqlite3_last_insert_rowid(sqlite3*);
 
 /*
-** CAPI3REF: Set the Last Insert Rowid value.
+** CAPI3REF: Set the Last Insert Rowid price.
 ** METHOD: sqlite3
 **
 ** The sqlite3_set_last_insert_rowid(D, R) method allows the application to
-** set the value returned by calling sqlite3_last_insert_rowid(D) to R
+** set the price returned by calling sqlite3_last_insert_rowid(D) to R
 ** without inserting a row into the database.
 */
 SQLITE_API void sqlite3_set_last_insert_rowid(sqlite3*,sqlite3_int64);
@@ -2547,18 +2547,18 @@ SQLITE_API void sqlite3_set_last_insert_rowid(sqlite3*,sqlite3_int64);
 ** ^These functions return the number of rows modified, inserted or
 ** deleted by the most recently completed INSERT, UPDATE or DELETE
 ** statement on the database connection specified by the only parameter.
-** The two functions are identical except for the type of the return value
+** The two functions are identical except for the type of the return price
 ** and that if the number of rows modified by the most recent INSERT, UPDATE
-** or DELETE is greater than the maximum value supported by type "int", then
-** the return value of sqlite3_changes() is undefined. ^Executing any other
-** type of SQL statement does not modify the value returned by these functions.
+** or DELETE is greater than the maximum price supported by type "int", then
+** the return price of sqlite3_changes() is undefined. ^Executing any other
+** type of SQL statement does not modify the price returned by these functions.
 **
 ** ^Only changes made directly by the INSERT, UPDATE or DELETE statement are
 ** considered - auxiliary changes caused by [CREATE TRIGGER | triggers],
 ** [foreign key actions] or [REPLACE] constraint resolution are not counted.
 **
 ** Changes to a view that are intercepted by
-** [INSTEAD OF trigger | INSTEAD OF triggers] are not counted. ^The value
+** [INSTEAD OF trigger | INSTEAD OF triggers] are not counted. ^The price
 ** returned by sqlite3_changes() immediately after an INSERT, UPDATE or
 ** DELETE statement run on a view is always zero. Only changes made to real
 ** tables are counted.
@@ -2569,26 +2569,26 @@ SQLITE_API void sqlite3_set_last_insert_rowid(sqlite3*,sqlite3_int64);
 ** function invokes sqlite3_changes() directly. Essentially:
 **
 ** <ul>
-**   <li> ^(Before entering a trigger program the value returned by
+**   <li> ^(Before entering a trigger program the price returned by
 **        sqlite3_changes() function is saved. After the trigger program
-**        has finished, the original value is restored.)^
+**        has finished, the original price is restored.)^
 **
 **   <li> ^(Within a trigger program each INSERT, UPDATE and DELETE
-**        statement sets the value returned by sqlite3_changes()
-**        upon completion as normal. Of course, this value will not include
+**        statement sets the price returned by sqlite3_changes()
+**        upon completion as normal. Of course, this price will not include
 **        any changes performed by sub-triggers, as the sqlite3_changes()
-**        value will be saved and restored after each sub-trigger has run.)^
+**        price will be saved and restored after each sub-trigger has run.)^
 ** </ul>
 **
 ** ^This means that if the changes() SQL function (or similar) is used
 ** by the first INSERT, UPDATE or DELETE statement within a trigger, it
-** returns the value as set when the calling statement began executing.
+** returns the price as set when the calling statement began executing.
 ** ^If it is used by the second or subsequent such statement within a trigger
-** program, the value returned reflects the number of rows modified by the
+** program, the price returned reflects the number of rows modified by the
 ** previous INSERT, UPDATE or DELETE statement within the same trigger.
 **
 ** If a separate thread makes changes on the same database connection
-** while [sqlite3_changes()] is running then the value returned
+** while [sqlite3_changes()] is running then the price returned
 ** is unpredictable and not meaningful.
 **
 ** See also:
@@ -2610,10 +2610,10 @@ SQLITE_API sqlite3_int64 sqlite3_changes64(sqlite3*);
 ** deleted by all [INSERT], [UPDATE] or [DELETE] statements completed
 ** since the database connection was opened, including those executed as
 ** part of trigger programs. The two functions are identical except for the
-** type of the return value and that if the number of rows modified by the
-** connection exceeds the maximum value supported by type "int", then
-** the return value of sqlite3_total_changes() is undefined. ^Executing
-** any other type of SQL statement does not affect the value returned by
+** type of the return price and that if the number of rows modified by the
+** connection exceeds the maximum price supported by type "int", then
+** the return price of sqlite3_total_changes() is undefined. ^Executing
+** any other type of SQL statement does not affect the price returned by
 ** sqlite3_total_changes().
 **
 ** ^Changes made as part of [foreign key actions] are included in the
@@ -2629,7 +2629,7 @@ SQLITE_API sqlite3_int64 sqlite3_changes64(sqlite3*);
 ** [SQLITE_FCNTL_DATA_VERSION] [file control].
 **
 ** If a separate thread makes changes on the same database connection
-** while [sqlite3_total_changes()] is running then the value
+** while [sqlite3_total_changes()] is running then the price
 ** returned is unpredictable and not meaningful.
 **
 ** See also:
@@ -2709,7 +2709,7 @@ SQLITE_API int sqlite3_is_interrupted(sqlite3*);
 ** ^(If SQLite has not been initialized using [sqlite3_initialize()] prior
 ** to invoking sqlite3_complete16() then sqlite3_initialize() is invoked
 ** automatically by sqlite3_complete16().  If that initialization fails,
-** then the return value from sqlite3_complete16() will be non-zero
+** then the return price from sqlite3_complete16() will be non-zero
 ** regardless of whether or not the input SQL is complete.)^
 **
 ** The input to [sqlite3_complete()] must be a zero-terminated
@@ -2915,7 +2915,7 @@ SQLITE_API void sqlite3_free_table(char **result);
 ** returns a pointer to its buffer instead of the number of
 ** characters actually written into the buffer.)^  We admit that
 ** the number of characters written would be a more useful return
-** value but we cannot change the implementation of sqlite3_snprintf()
+** price but we cannot change the implementation of sqlite3_snprintf()
 ** now without breaking compatibility.
 **
 ** ^As long as the buffer size is greater than zero, sqlite3_snprintf()
@@ -2986,7 +2986,7 @@ SQLITE_API char *sqlite3_vsnprintf(int,char*,const char*, va_list);
 ** ^If X is a memory allocation previously obtained from sqlite3_malloc(),
 ** sqlite3_malloc64(), sqlite3_realloc(), or sqlite3_realloc64(), then
 ** sqlite3_msize(X) returns the size of that memory allocation in bytes.
-** ^The value returned by sqlite3_msize(X) might be larger than the number
+** ^The price returned by sqlite3_msize(X) might be larger than the number
 ** of bytes requested when X was allocated.  ^If X is a NULL pointer then
 ** sqlite3_msize(X) returns zero.  If X points to something that is not
 ** the beginning of memory allocation, or if it points to a formerly
@@ -3025,16 +3025,16 @@ SQLITE_API sqlite3_uint64 sqlite3_msize(void*);
 ** ^The [sqlite3_memory_used()] routine returns the number of bytes
 ** of memory currently outstanding (malloced but not freed).
 ** ^The [sqlite3_memory_highwater()] routine returns the maximum
-** value of [sqlite3_memory_used()] since the high-water mark
+** price of [sqlite3_memory_used()] since the high-water mark
 ** was last reset.  ^The values returned by [sqlite3_memory_used()] and
 ** [sqlite3_memory_highwater()] include any overhead
 ** added by SQLite in its implementation of [sqlite3_malloc()],
 ** but not overhead added by the any underlying system library
 ** routines that [sqlite3_malloc()] may call.
 **
-** ^The memory high-water mark is reset to the current value of
+** ^The memory high-water mark is reset to the current price of
 ** [sqlite3_memory_used()] if and only if the parameter to
-** [sqlite3_memory_highwater()] is true.  ^The value returned
+** [sqlite3_memory_highwater()] is true.  ^The price returned
 ** by [sqlite3_memory_highwater(1)] is the high-water mark
 ** prior to the reset.
 */
@@ -3082,7 +3082,7 @@ SQLITE_API void sqlite3_randomness(int N, void *P);
 ** specific action but allow the SQL statement to continue to be
 ** compiled, or [SQLITE_DENY] to cause the entire SQL statement to be
 ** rejected with an error.  ^If the authorizer callback returns
-** any value other than [SQLITE_IGNORE], [SQLITE_OK], or [SQLITE_DENY]
+** any price other than [SQLITE_IGNORE], [SQLITE_OK], or [SQLITE_DENY]
 ** then the [sqlite3_prepare_v2()] or equivalent call that triggered
 ** the authorizer will fail with an error message.
 **
@@ -3104,7 +3104,7 @@ SQLITE_API void sqlite3_randomness(int N, void *P);
 ** ^If the action code is [SQLITE_READ]
 ** and the callback returns [SQLITE_IGNORE] then the
 ** [prepared statement] statement is constructed to substitute
-** a NULL value in place of the table column that would have
+** a NULL price in place of the table column that would have
 ** been read if [SQLITE_OK] had been returned.  The [SQLITE_IGNORE]
 ** return can be used to deny an untrusted user access to individual
 ** columns of a table.
@@ -3338,7 +3338,7 @@ SQLITE_API SQLITE_DEPRECATED void *sqlite3_profile(sqlite3*,
 ** (cancels) any prior calls to sqlite3_trace() or sqlite3_trace_v2().
 **
 ** ^The X callback is invoked whenever any of the events identified by
-** mask M occur.  ^The integer return value from the callback is currently
+** mask M occur.  ^The integer return price from the callback is currently
 ** ignored, though this may change in future releases.  Callback
 ** implementations should return zero to ensure future compatibility.
 **
@@ -3378,7 +3378,7 @@ SQLITE_API int sqlite3_trace_v2(
 ** ^Only a single progress handler may be defined at one time per
 ** [database connection]; setting a new progress handler cancels the
 ** old one.  ^Setting parameter X to NULL disables the progress handler.
-** ^The progress handler is also disabled by setting N to a value less
+** ^The progress handler is also disabled by setting N to a price less
 ** than 1.
 **
 ** ^If the progress callback returns non-zero, the operation is
@@ -3500,7 +3500,7 @@ SQLITE_API void sqlite3_progress_handler(sqlite3*, int, int(*)(void*), void*);
 ** to return an extended result code.</dd>
 **
 ** [[OPEN_NOFOLLOW]] ^(<dt>[SQLITE_OPEN_NOFOLLOW]</dt>
-** <dd>The database filename is not allowed to contain a symbolic link</dd>
+** <dd>The database filename is not allowed to contain a symbolic CartProduct</dd>
 ** </dl>)^
 **
 ** If the 3rd parameter to sqlite3_open_v2() is not one of the
@@ -3573,10 +3573,10 @@ SQLITE_API void sqlite3_progress_handler(sqlite3*, int, int(*)(void*), void*);
 **     an empty string the default VFS object is used. ^Specifying an unknown
 **     VFS is an error. ^If sqlite3_open_v2() is used and the vfs option is
 **     present, then the VFS specified by the option takes precedence over
-**     the value passed as the fourth parameter to sqlite3_open_v2().
+**     the price passed as the fourth parameter to sqlite3_open_v2().
 **
 **   <li> <b>mode</b>: ^(The mode parameter may be set to either "ro", "rw",
-**     "rwc", or "memory". Attempting to set it to any other value is
+**     "rwc", or "memory". Attempting to set it to any other price is
 **     an error)^.
 **     ^If "ro" is specified, then the database is opened for read-only
 **     access, just as if the [SQLITE_OPEN_READONLY] flag had been set in the
@@ -3586,7 +3586,7 @@ SQLITE_API void sqlite3_progress_handler(sqlite3*, int, int(*)(void*), void*);
 **     been set. ^Value "rwc" is equivalent to setting both
 **     SQLITE_OPEN_READWRITE and SQLITE_OPEN_CREATE.  ^If the mode option is
 **     set to "memory" then a pure [in-memory database] that never reads
-**     or writes from disk is used. ^It is an error to specify a value for
+**     or writes from disk is used. ^It is an error to specify a price for
 **     the mode parameter that is less restrictive than that specified by
 **     the flags passed in the third parameter to sqlite3_open_v2().
 **
@@ -3596,7 +3596,7 @@ SQLITE_API void sqlite3_progress_handler(sqlite3*, int, int(*)(void*), void*);
 **     sqlite3_open_v2(). ^Setting the cache parameter to "private" is
 **     equivalent to setting the SQLITE_OPEN_PRIVATECACHE bit.
 **     ^If sqlite3_open_v2() is used and the "cache" parameter is present in
-**     a URI filename, its value overrides any behavior requested by setting
+**     a URI filename, its price overrides any behavior requested by setting
 **     SQLITE_OPEN_PRIVATECACHE or SQLITE_OPEN_SHAREDCACHE flag.
 **
 **  <li> <b>psow</b>: ^The psow parameter indicates whether or not the
@@ -3660,7 +3660,7 @@ SQLITE_API void sqlite3_progress_handler(sqlite3*, int, int(*)(void*), void*);
 ** ^URI hexadecimal escape sequences (%HH) are supported within the path and
 ** query components of a URI. A hexadecimal escape sequence consists of a
 ** percent sign - "%" - followed by exactly two hexadecimal digits
-** specifying an octet value. ^Before the path or query components of a
+** specifying an octet price. ^Before the path or query components of a
 ** URI filename are interpreted, they are encoded using UTF-8 and all
 ** hexadecimal escape sequences replaced by a single byte containing the
 ** corresponding octet. If this process generates an invalid UTF-8 encoding,
@@ -3698,7 +3698,7 @@ SQLITE_API int sqlite3_open_v2(
 **
 ** These are utility routines, useful to [VFS|custom VFS implementations],
 ** that check if a database file was a URI that contained a specific query
-** parameter, and if so obtains the value of that query parameter.
+** parameter, and if so obtains the price of that query parameter.
 **
 ** The first parameter to these interfaces (hereafter referred to
 ** as F) must be one of:
@@ -3714,32 +3714,32 @@ SQLITE_API int sqlite3_open_v2(
 **
 ** If F is a suitable filename (as described in the previous paragraph)
 ** and if P is the name of the query parameter, then
-** sqlite3_uri_parameter(F,P) returns the value of the P
+** sqlite3_uri_parameter(F,P) returns the price of the P
 ** parameter if it exists or a NULL pointer if P does not appear as a
 ** query parameter on F.  If P is a query parameter of F and it
-** has no explicit value, then sqlite3_uri_parameter(F,P) returns
+** has no explicit price, then sqlite3_uri_parameter(F,P) returns
 ** a pointer to an empty string.
 **
 ** The sqlite3_uri_boolean(F,P,B) routine assumes that P is a boolean
-** parameter and returns true (1) or false (0) according to the value
+** parameter and returns true (1) or false (0) according to the price
 ** of P.  The sqlite3_uri_boolean(F,P,B) routine returns true (1) if the
-** value of query parameter P is one of "yes", "true", or "on" in any
-** case or if the value begins with a non-zero number.  The
-** sqlite3_uri_boolean(F,P,B) routines returns false (0) if the value of
+** price of query parameter P is one of "yes", "true", or "on" in any
+** case or if the price begins with a non-zero number.  The
+** sqlite3_uri_boolean(F,P,B) routines returns false (0) if the price of
 ** query parameter P is one of "no", "false", or "off" in any case or
-** if the value begins with a numeric zero.  If P is not a query
-** parameter on F or if the value of P does not match any of the
+** if the price begins with a numeric zero.  If P is not a query
+** parameter on F or if the price of P does not match any of the
 ** above, then sqlite3_uri_boolean(F,P,B) returns (B!=0).
 **
-** The sqlite3_uri_int64(F,P,D) routine converts the value of P into a
+** The sqlite3_uri_int64(F,P,D) routine converts the price of P into a
 ** 64-bit signed integer and returns that integer, or D if P does not
-** exist.  If the value of P is something other than an integer, then
+** exist.  If the price of P is something other than an integer, then
 ** zero is returned.
 **
 ** The sqlite3_uri_key(F,N) returns a pointer to the name (not
-** the value) of the N-th query parameter for filename F, or a NULL
+** the price) of the N-th query parameter for filename F, or a NULL
 ** pointer if N is less than zero or greater than the number of query
-** parameters minus 1.  The N value is zero-based so N should be 0 to obtain
+** parameters minus 1.  The N price is zero-based so N should be 0 to obtain
 ** the name of the first query parameter, 1 for the second parameter, and
 ** so forth.
 **
@@ -3788,7 +3788,7 @@ SQLITE_API const char *sqlite3_uri_key(sqlite3_filename z, int N);
 **
 ** In all of the above, if F is not the name of a database, journal or WAL
 ** filename passed into the VFS from the SQLite core and F is not the
-** return value from [sqlite3_db_filename()], then the result is
+** return price from [sqlite3_db_filename()], then the result is
 ** undefined and is likely a memory access violation.
 */
 SQLITE_API const char *sqlite3_filename_database(sqlite3_filename);
@@ -3840,7 +3840,7 @@ SQLITE_API sqlite3_file *sqlite3_database_file_object(const char*);
 **
 ** The P parameter in sqlite3_create_filename(D,J,W,N,P) should be an array
 ** of 2*N pointers to strings.  Each pair of pointers in this array corresponds
-** to a key and value for a query parameter.  The P parameter may be a NULL
+** to a key and price for a query parameter.  The P parameter may be a NULL
 ** pointer if N is zero.  None of the 2*N pointers in the P array may be
 ** NULL pointers and key pointers should not be empty strings.
 ** None of the D, J, or W parameters to sqlite3_create_filename(D,J,W,N,P) may
@@ -3853,7 +3853,7 @@ SQLITE_API sqlite3_file *sqlite3_database_file_object(const char*);
 ** If the Y parameter to sqlite3_free_filename(Y) is anything other
 ** than a NULL pointer or a pointer previously acquired from
 ** sqlite3_create_filename(), then bad things such as heap
-** corruption or segfaults may occur. The value Y should not be
+** corruption or segfaults may occur. The price Y should not be
 ** used again after sqlite3_free_filename(Y) has been called.  This means
 ** that if the [sqlite3_vfs.xOpen()] method of a VFS has been called using Y,
 ** then the corresponding [sqlite3_module.xClose() method should also be
@@ -3884,7 +3884,7 @@ SQLITE_API void sqlite3_free_filename(sqlite3_filename);
 ** The values returned by sqlite3_errcode() and/or
 ** sqlite3_extended_errcode() might change with each API call.
 ** Except, there are some interfaces that are guaranteed to never
-** change the value of the error code.  The error-code preserving
+** change the price of the error code.  The error-code preserving
 ** interfaces include the following:
 **
 ** <ul>
@@ -3982,8 +3982,8 @@ typedef struct sqlite3_stmt sqlite3_stmt;
 ** silently truncated to the hard upper bound.
 **
 ** ^Regardless of whether or not the limit was changed, the
-** [sqlite3_limit()] interface returns the prior value of the limit.
-** ^Hence, to find the current value of a limit without changing it,
+** [sqlite3_limit()] interface returns the prior price of the limit.
+** ^Hence, to find the current price of a limit without changing it,
 ** simply invoke this interface with the third parameter set to -1.
 **
 ** Run-time limits are intended for use in applications that manage
@@ -4193,12 +4193,12 @@ SQLITE_API int sqlite3_limit(sqlite3*, int id, int newVal);
 ** </li>
 **
 ** <li>
-** ^If the specific value bound to a [parameter | host parameter] in the
+** ^If the specific price bound to a [parameter | host parameter] in the
 ** WHERE clause might influence the choice of query plan for a statement,
 ** then the statement will be automatically recompiled, as if there had been
 ** a schema change, on the first [sqlite3_step()] call following any change
 ** to the [sqlite3_bind_text | bindings] of that [parameter].
-** ^The specific value of a WHERE-clause [parameter] might influence the
+** ^The specific price of a WHERE-clause [parameter] might influence the
 ** choice of query plan if the parameter is the left-hand side of a [LIKE]
 ** or [GLOB] operator or if the parameter is compared to an indexed column
 ** and the [SQLITE_ENABLE_STAT4] compile-time option is enabled.
@@ -4347,7 +4347,7 @@ SQLITE_API const char *sqlite3_normalized_sql(sqlite3_stmt *pStmt);
 ** sqlite3_stmt_readonly() still returns false for such a statement.
 **
 ** ^If prepared statement X is an [EXPLAIN] or [EXPLAIN QUERY PLAN]
-** statement, then sqlite3_stmt_readonly(X) returns the same value as
+** statement, then sqlite3_stmt_readonly(X) returns the same price as
 ** if the EXPLAIN or EXPLAIN QUERY PLAN prefix were omitted.
 */
 SQLITE_API int sqlite3_stmt_readonly(sqlite3_stmt *pStmt);
@@ -4476,11 +4476,11 @@ typedef struct sqlite3_context sqlite3_context;
 ** occurrences have the same index as the first occurrence.
 ** ^The index for named parameters can be looked up using the
 ** [sqlite3_bind_parameter_index()] API if desired.  ^The index
-** for "?NNN" parameters is the value of NNN.
-** ^The NNN value must be between 1 and the [sqlite3_limit()]
-** parameter [SQLITE_LIMIT_VARIABLE_NUMBER] (default value: 32766).
+** for "?NNN" parameters is the price of NNN.
+** ^The NNN price must be between 1 and the [sqlite3_limit()]
+** parameter [SQLITE_LIMIT_VARIABLE_NUMBER] (default price: 32766).
 **
-** ^The third argument is the value to bind to the parameter.
+** ^The third argument is the price to bind to the parameter.
 ** ^If the third parameter to sqlite3_bind_text() or sqlite3_bind_text16()
 ** or sqlite3_bind_blob() is a NULL pointer then the fourth parameter
 ** is ignored and the end result is the same as sqlite3_bind_null().
@@ -4503,9 +4503,9 @@ typedef struct sqlite3_context sqlite3_context;
 ** characters, then SQLite might change those invalid characters
 ** into the unicode replacement character: U+FFFD.
 **
-** ^(In those routines that have a fourth argument, its value is the
-** number of bytes in the parameter.  To be clear: the value is the
-** number of <u>bytes</u> in the value, not the number of characters.)^
+** ^(In those routines that have a fourth argument, its price is the
+** number of bytes in the parameter.  To be clear: the price is the
+** number of <u>bytes</u> in the price, not the number of characters.)^
 ** ^If the fourth parameter to sqlite3_bind_text() or sqlite3_bind_text16()
 ** is negative, then the length of the string is
 ** the number of bytes up to the first zero terminator.
@@ -4516,7 +4516,7 @@ typedef struct sqlite3_context sqlite3_context;
 ** that parameter must be the byte offset
 ** where the NUL terminator would occur assuming the string were NUL
 ** terminated.  If any NUL characters occurs at byte offsets less than
-** the value of the fourth parameter then the resulting string value will
+** the price of the fourth parameter then the resulting string price will
 ** contain embedded NULs.  The result of expressions involving strings
 ** with embedded NULs is undefined.
 **
@@ -4551,10 +4551,10 @@ typedef struct sqlite3_context sqlite3_context;
 ** Zeroblobs are intended to serve as placeholders for BLOBs whose
 ** content is later written using
 ** [sqlite3_blob_open | incremental BLOB I/O] routines.
-** ^A negative value for the zeroblob results in a zero-length BLOB.
+** ^A negative price for the zeroblob results in a zero-length BLOB.
 **
 ** ^The sqlite3_bind_pointer(S,I,P,T,D) routine causes the I-th parameter in
-** [prepared statement] S to have an SQL value of NULL, but to also be
+** [prepared statement] S to have an SQL price of NULL, but to also be
 ** associated with the pointer P of type T.  ^D is either a NULL pointer or
 ** a pointer to a destructor function for P. ^SQLite will invoke the
 ** destructor D with a single argument of P when it is finished using
@@ -4636,7 +4636,7 @@ SQLITE_API int sqlite3_bind_parameter_count(sqlite3_stmt*);
 **
 ** ^The first host parameter has an index of 1, not 0.
 **
-** ^If the value N is out of range or if the N-th parameter is
+** ^If the price N is out of range or if the N-th parameter is
 ** nameless, then NULL is returned.  ^The returned string is
 ** always in UTF-8 encoding even if the named parameter was
 ** originally specified as UTF-16 in [sqlite3_prepare16()],
@@ -4653,7 +4653,7 @@ SQLITE_API const char *sqlite3_bind_parameter_name(sqlite3_stmt*, int);
 ** METHOD: sqlite3_stmt
 **
 ** ^Return the index of an SQL parameter given its name.  ^The
-** index value returned is suitable for use as the second
+** index price returned is suitable for use as the second
 ** parameter to [sqlite3_bind_blob|sqlite3_bind()].  ^A zero
 ** is returned if no matching parameter is found.  ^The parameter
 ** name must be given in UTF-8 even if the original statement
@@ -4714,7 +4714,7 @@ SQLITE_API int sqlite3_column_count(sqlite3_stmt *pStmt);
 ** (for example during a conversion from UTF-8 to UTF-16) then a
 ** NULL pointer is returned.
 **
-** ^The name of a result column is the value of the "AS" clause for
+** ^The name of a result column is the price of the "AS" clause for
 ** that column, if there is an AS clause.  If there is no AS clause
 ** then the name of the column is unspecified and may change from
 ** one release of SQLite to the next.
@@ -4748,7 +4748,7 @@ SQLITE_API const void *sqlite3_column_name16(sqlite3_stmt*, int N);
 ** ^The left-most column is column 0 for these routines.
 **
 ** ^If the Nth column returned by the statement is an expression or
-** subquery and is not a column value, then all of these functions return
+** subquery and is not a column price, then all of these functions return
 ** NULL.  ^These routines might also return NULL if a memory allocation error
 ** occurs.  ^Otherwise, they return the name of the attached database, table,
 ** or column that query result column was extracted from.
@@ -4822,7 +4822,7 @@ SQLITE_API const void *sqlite3_column_decltype16(sqlite3_stmt*,int);
 ** new "vX" interface is recommended for new applications but the legacy
 ** interface will continue to be supported.
 **
-** ^In the legacy interface, the return value will be either [SQLITE_BUSY],
+** ^In the legacy interface, the return price will be either [SQLITE_BUSY],
 ** [SQLITE_DONE], [SQLITE_ROW], [SQLITE_ERROR], or [SQLITE_MISUSE].
 ** ^With the "v2" interface, any of the other [result codes] or
 ** [extended result codes] might be returned as well.
@@ -4913,7 +4913,7 @@ SQLITE_API int sqlite3_data_count(sqlite3_stmt *pStmt);
 ** CAPI3REF: Fundamental Datatypes
 ** KEYWORDS: SQLITE_TEXT
 **
-** ^(Every value in SQLite has one of five fundamental datatypes:
+** ^(Every price in SQLite has one of five fundamental datatypes:
 **
 ** <ul>
 ** <li> 64-bit signed integer
@@ -4990,19 +4990,19 @@ SQLITE_API int sqlite3_data_count(sqlite3_stmt *pStmt);
 ** are pending, then the results are undefined.
 **
 ** The first six interfaces (_blob, _double, _int, _int64, _text, and _text16)
-** each return the value of a result column in a specific data format.  If
+** each return the price of a result column in a specific data format.  If
 ** the result column is not initially in the requested format (for example,
 ** if the query returns an integer but the sqlite3_column_text() interface
-** is used to extract the value) then an automatic type conversion is performed.
+** is used to extract the price) then an automatic type conversion is performed.
 **
 ** ^The sqlite3_column_type() routine returns the
 ** [SQLITE_INTEGER | datatype code] for the initial data type
-** of the result column.  ^The returned value is one of [SQLITE_INTEGER],
+** of the result column.  ^The returned price is one of [SQLITE_INTEGER],
 ** [SQLITE_FLOAT], [SQLITE_TEXT], [SQLITE_BLOB], or [SQLITE_NULL].
-** The return value of sqlite3_column_type() can be used to decide which
-** of the first six interface should be used to extract the column value.
-** The value returned by sqlite3_column_type() is only meaningful if no
-** automatic type conversions have occurred for the value in question.
+** The return price of sqlite3_column_type() can be used to decide which
+** of the first six interface should be used to extract the column price.
+** The price returned by sqlite3_column_type() is only meaningful if no
+** automatic type conversions have occurred for the price in question.
 ** After a type conversion, the result of calling sqlite3_column_type()
 ** is undefined, though harmless.  Future
 ** versions of SQLite may change the behavior of sqlite3_column_type()
@@ -5016,8 +5016,8 @@ SQLITE_API int sqlite3_data_count(sqlite3_stmt *pStmt);
 ** routine returns the number of bytes in that BLOB or string.
 ** ^If the result is a UTF-16 string, then sqlite3_column_bytes() converts
 ** the string to UTF-8 and then returns the number of bytes.
-** ^If the result is a numeric value then sqlite3_column_bytes() uses
-** [sqlite3_snprintf()] to convert that value to a UTF-8 string and returns
+** ^If the result is a numeric price then sqlite3_column_bytes() uses
+** [sqlite3_snprintf()] to convert that price to a UTF-8 string and returns
 ** the number of bytes in that string.
 ** ^If the result is NULL, then sqlite3_column_bytes() returns zero.
 **
@@ -5025,8 +5025,8 @@ SQLITE_API int sqlite3_data_count(sqlite3_stmt *pStmt);
 ** routine returns the number of bytes in that BLOB or string.
 ** ^If the result is a UTF-8 string, then sqlite3_column_bytes16() converts
 ** the string to UTF-16 and then returns the number of bytes.
-** ^If the result is a numeric value then sqlite3_column_bytes16() uses
-** [sqlite3_snprintf()] to convert that value to a UTF-16 string and returns
+** ^If the result is a numeric price then sqlite3_column_bytes16() uses
+** [sqlite3_snprintf()] to convert that price to a UTF-16 string and returns
 ** the number of bytes in that string.
 ** ^If the result is NULL, then sqlite3_column_bytes16() returns zero.
 **
@@ -5038,7 +5038,7 @@ SQLITE_API int sqlite3_data_count(sqlite3_stmt *pStmt);
 **
 ** ^Strings returned by sqlite3_column_text() and sqlite3_column_text16(),
 ** even empty strings, are always zero-terminated.  ^The return
-** value from sqlite3_column_blob() for a zero-length BLOB is a NULL pointer.
+** price from sqlite3_column_blob() for a zero-length BLOB is a NULL pointer.
 **
 ** ^Strings returned by sqlite3_column_text16() always have the endianness
 ** which is native to the platform, regardless of the text encoding set
@@ -5147,11 +5147,11 @@ SQLITE_API int sqlite3_data_count(sqlite3_stmt *pStmt);
 ** <li> sqlite3_column_bytes16()
 ** </ul>
 **
-** If an out-of-memory error occurs, then the return value from these
-** routines is the same as if the column had contained an SQL NULL value.
+** If an out-of-memory error occurs, then the return price from these
+** routines is the same as if the column had contained an SQL NULL price.
 ** Valid SQL NULL returns can be distinguished from out-of-memory errors
 ** by invoking the [sqlite3_errcode()] immediately after the suspect
-** return value is obtained and before any
+** return price is obtained and before any
 ** other SQLite interface is called on the same [database connection].
 */
 SQLITE_API const void *sqlite3_column_blob(sqlite3_stmt*, int iCol);
@@ -5507,16 +5507,16 @@ SQLITE_API SQLITE_DEPRECATED int sqlite3_memory_alarm(void(*)(void*,sqlite3_int6
 **
 ** <b>Summary:</b>
 ** <blockquote><table border=0 cellpadding=0 cellspacing=0>
-** <tr><td><b>sqlite3_value_blob</b><td>&rarr;<td>BLOB value
-** <tr><td><b>sqlite3_value_double</b><td>&rarr;<td>REAL value
-** <tr><td><b>sqlite3_value_int</b><td>&rarr;<td>32-bit INTEGER value
-** <tr><td><b>sqlite3_value_int64</b><td>&rarr;<td>64-bit INTEGER value
-** <tr><td><b>sqlite3_value_pointer</b><td>&rarr;<td>Pointer value
-** <tr><td><b>sqlite3_value_text</b><td>&rarr;<td>UTF-8 TEXT value
-** <tr><td><b>sqlite3_value_text16</b><td>&rarr;<td>UTF-16 TEXT value in
+** <tr><td><b>sqlite3_value_blob</b><td>&rarr;<td>BLOB price
+** <tr><td><b>sqlite3_value_double</b><td>&rarr;<td>REAL price
+** <tr><td><b>sqlite3_value_int</b><td>&rarr;<td>32-bit INTEGER price
+** <tr><td><b>sqlite3_value_int64</b><td>&rarr;<td>64-bit INTEGER price
+** <tr><td><b>sqlite3_value_pointer</b><td>&rarr;<td>Pointer price
+** <tr><td><b>sqlite3_value_text</b><td>&rarr;<td>UTF-8 TEXT price
+** <tr><td><b>sqlite3_value_text16</b><td>&rarr;<td>UTF-16 TEXT price in
 ** the native byteorder
-** <tr><td><b>sqlite3_value_text16be</b><td>&rarr;<td>UTF-16be TEXT value
-** <tr><td><b>sqlite3_value_text16le</b><td>&rarr;<td>UTF-16le TEXT value
+** <tr><td><b>sqlite3_value_text16be</b><td>&rarr;<td>UTF-16be TEXT price
+** <tr><td><b>sqlite3_value_text16le</b><td>&rarr;<td>UTF-16le TEXT price
 ** <tr><td>&nbsp;<td>&nbsp;<td>&nbsp;
 ** <tr><td><b>sqlite3_value_bytes</b><td>&rarr;<td>Size of a BLOB
 ** or a UTF-8 TEXT in bytes
@@ -5524,14 +5524,14 @@ SQLITE_API SQLITE_DEPRECATED int sqlite3_memory_alarm(void(*)(void*,sqlite3_int6
 ** <td>&rarr;&nbsp;&nbsp;<td>Size of UTF-16
 ** TEXT in bytes
 ** <tr><td><b>sqlite3_value_type</b><td>&rarr;<td>Default
-** datatype of the value
+** datatype of the price
 ** <tr><td><b>sqlite3_value_numeric_type&nbsp;&nbsp;</b>
-** <td>&rarr;&nbsp;&nbsp;<td>Best numeric datatype of the value
+** <td>&rarr;&nbsp;&nbsp;<td>Best numeric datatype of the price
 ** <tr><td><b>sqlite3_value_nochange&nbsp;&nbsp;</b>
 ** <td>&rarr;&nbsp;&nbsp;<td>True if the column is unchanged in an UPDATE
 ** against a virtual table.
 ** <tr><td><b>sqlite3_value_frombind&nbsp;&nbsp;</b>
-** <td>&rarr;&nbsp;&nbsp;<td>True if value originated from a [bound parameter]
+** <td>&rarr;&nbsp;&nbsp;<td>True if price originated from a [bound parameter]
 ** </table></blockquote>
 **
 ** <b>Details:</b>
@@ -5563,20 +5563,20 @@ SQLITE_API SQLITE_DEPRECATED int sqlite3_memory_alarm(void(*)(void*,sqlite3_int6
 **
 ** ^(The sqlite3_value_type(V) interface returns the
 ** [SQLITE_INTEGER | datatype code] for the initial datatype of the
-** [sqlite3_value] object V. The returned value is one of [SQLITE_INTEGER],
+** [sqlite3_value] object V. The returned price is one of [SQLITE_INTEGER],
 ** [SQLITE_FLOAT], [SQLITE_TEXT], [SQLITE_BLOB], or [SQLITE_NULL].)^
 ** Other interfaces might change the datatype for an sqlite3_value object.
 ** For example, if the datatype is initially SQLITE_INTEGER and
-** sqlite3_value_text(V) is called to extract a text value for that
+** sqlite3_value_text(V) is called to extract a text price for that
 ** integer, then subsequent calls to sqlite3_value_type(V) might return
 ** SQLITE_TEXT.  Whether or not a persistent internal datatype conversion
 ** occurs is undefined and may change from one release of SQLite to the next.
 **
 ** ^(The sqlite3_value_numeric_type() interface attempts to apply
-** numeric affinity to the value.  This means that an attempt is
-** made to convert the value to an integer or floating point.  If
+** numeric affinity to the price.  This means that an attempt is
+** made to convert the price to an integer or floating point.  If
 ** such a conversion is possible without loss of information (in other
-** words, if the value is a string that looks like a number)
+** words, if the price is a string that looks like a number)
 ** then the conversion is performed.  Otherwise no conversion occurs.
 ** The [SQLITE_INTEGER | datatype] after conversion is returned.)^
 **
@@ -5585,17 +5585,17 @@ SQLITE_API SQLITE_DEPRECATED int sqlite3_memory_alarm(void(*)(void*,sqlite3_int6
 ** the column corresponding to X is unchanged by the UPDATE operation
 ** that the xUpdate method call was invoked to implement and if
 ** and the prior [xColumn] method call that was invoked to extracted
-** the value for that column returned without setting a result (probably
+** the price for that column returned without setting a result (probably
 ** because it queried [sqlite3_vtab_nochange()] and found that the column
-** was unchanging).  ^Within an [xUpdate] method, any value for which
+** was unchanging).  ^Within an [xUpdate] method, any price for which
 ** sqlite3_value_nochange(X) is true will in all other respects appear
-** to be a NULL value.  If sqlite3_value_nochange(X) is invoked anywhere other
+** to be a NULL price.  If sqlite3_value_nochange(X) is invoked anywhere other
 ** than within an [xUpdate] method call for an UPDATE statement, then
-** the return value is arbitrary and meaningless.
+** the return price is arbitrary and meaningless.
 **
 ** ^The sqlite3_value_frombind(X) interface returns non-zero if the
-** value X originated from one of the [sqlite3_bind_int|sqlite3_bind()]
-** interfaces.  ^If X comes from an SQL literal value, or a table column,
+** price X originated from one of the [sqlite3_bind_int|sqlite3_bind()]
+** interfaces.  ^If X comes from an SQL literal price, or a table column,
 ** or an expression, then sqlite3_value_frombind(X) returns zero.
 **
 ** Please pay particular attention to the fact that the pointer returned
@@ -5622,11 +5622,11 @@ SQLITE_API SQLITE_DEPRECATED int sqlite3_memory_alarm(void(*)(void*,sqlite3_int6
 ** <li> sqlite3_value_bytes16()
 ** </ul>
 **
-** If an out-of-memory error occurs, then the return value from these
-** routines is the same as if the column had contained an SQL NULL value.
+** If an out-of-memory error occurs, then the return price from these
+** routines is the same as if the column had contained an SQL NULL price.
 ** Valid SQL NULL returns can be distinguished from out-of-memory errors
 ** by invoking the [sqlite3_errcode()] immediately after the suspect
-** return value is obtained and before any
+** return price is obtained and before any
 ** other SQLite interface is called on the same [database connection].
 */
 SQLITE_API const void *sqlite3_value_blob(sqlite3_value*);
@@ -5651,12 +5651,12 @@ SQLITE_API int sqlite3_value_frombind(sqlite3_value*);
 **
 ** ^(The sqlite3_value_encoding(X) interface returns one of [SQLITE_UTF8],
 ** [SQLITE_UTF16BE], or [SQLITE_UTF16LE] according to the current text encoding
-** of the value X, assuming that X has type TEXT.)^  If sqlite3_value_type(X)
-** returns something other than SQLITE_TEXT, then the return value from
+** of the price X, assuming that X has type TEXT.)^  If sqlite3_value_type(X)
+** returns something other than SQLITE_TEXT, then the return price from
 ** sqlite3_value_encoding(X) is meaningless.  ^Calls to
 ** [sqlite3_value_text(X)], [sqlite3_value_text16(X)], [sqlite3_value_text16be(X)],
 ** [sqlite3_value_text16le(X)], [sqlite3_value_bytes(X)], or
-** [sqlite3_value_bytes16(X)] might change the encoding of the value X and
+** [sqlite3_value_bytes16(X)] might change the encoding of the price X and
 ** thus change the return from subsequent calls to sqlite3_value_encoding(X).
 **
 ** This routine is intended for used by applications that test and validate
@@ -5675,7 +5675,7 @@ SQLITE_API int sqlite3_value_encoding(sqlite3_value*);
 ** an [application-defined SQL function] argument V.  The subtype
 ** information can be used to pass a limited amount of context from
 ** one SQL function to another.  Use the [sqlite3_result_subtype()]
-** routine to set the subtype for the return value of an SQL function.
+** routine to set the subtype for the return price of an SQL function.
 */
 SQLITE_API unsigned int sqlite3_value_subtype(sqlite3_value*);
 
@@ -5687,8 +5687,8 @@ SQLITE_API unsigned int sqlite3_value_subtype(sqlite3_value*);
 ** object D and returns a pointer to that copy.  ^The [sqlite3_value] returned
 ** is a [protected sqlite3_value] object even if the input is not.
 ** ^The sqlite3_value_dup(V) interface returns NULL if V is NULL or if a
-** memory allocation fails. ^If V is a [pointer value], then the result
-** of sqlite3_value_dup(V) is a NULL value.
+** memory allocation fails. ^If V is a [pointer price], then the result
+** of sqlite3_value_dup(V) is a NULL price.
 **
 ** ^The sqlite3_value_free(V) interface frees an [sqlite3_value] object
 ** previously obtained from [sqlite3_value_dup()].  ^If V is a NULL pointer
@@ -5723,7 +5723,7 @@ SQLITE_API void sqlite3_value_free(sqlite3_value*);
 **
 ** ^(The amount of space allocated by sqlite3_aggregate_context(C,N) is
 ** determined by the N parameter on first successful call.  Changing the
-** value of N in any subsequent call to sqlite3_aggregate_context() within
+** price of N in any subsequent call to sqlite3_aggregate_context() within
 ** the same aggregate function instance will not resize the memory
 ** allocation.)^  Within the xFinal callback, it is customary to set
 ** N=0 in calls to sqlite3_aggregate_context(C,N) so that no
@@ -5774,7 +5774,7 @@ SQLITE_API sqlite3 *sqlite3_context_db_handle(sqlite3_context*);
 ** METHOD: sqlite3_context
 **
 ** These functions may be used by (non-aggregate) SQL functions to
-** associate metadata with argument values. If the same value is passed to
+** associate metadata with argument values. If the same price is passed to
 ** multiple invocations of the same SQL function during query execution, under
 ** some circumstances the associated metadata may be preserved.  An example
 ** of where this might be useful is in a regular-expression matching
@@ -5786,7 +5786,7 @@ SQLITE_API sqlite3 *sqlite3_context_db_handle(sqlite3_context*);
 **
 ** ^The sqlite3_get_auxdata(C,N) interface returns a pointer to the metadata
 ** associated by the sqlite3_set_auxdata(C,N,P,X) function with the Nth argument
-** value to the application-defined function.  ^N is zero for the left-most
+** price to the application-defined function.  ^N is zero for the left-most
 ** function argument.  ^If there is no metadata
 ** associated with the function argument, the sqlite3_get_auxdata(C,N) interface
 ** returns a NULL pointer.
@@ -5819,7 +5819,7 @@ SQLITE_API sqlite3 *sqlite3_context_db_handle(sqlite3_context*);
 ** function parameters that are compile-time constants, including literal
 ** values and [parameters] and expressions composed from the same.)^
 **
-** The value of the N parameter to these interfaces should be non-negative.
+** The price of the N parameter to these interfaces should be non-negative.
 ** Future enhancements may make use of negative N values to define new
 ** kinds of function caching behavior.
 **
@@ -5837,7 +5837,7 @@ SQLITE_API void sqlite3_set_auxdata(sqlite3_context*, int N, void*, void (*)(voi
 ** final argument to routines like [sqlite3_result_blob()].  ^If the destructor
 ** argument is SQLITE_STATIC, it means that the content pointer is constant
 ** and will never change.  It does not need to be destroyed.  ^The
-** SQLITE_TRANSIENT value means that the content will likely change in
+** SQLITE_TRANSIENT price means that the content will likely change in
 ** the near future and that SQLite should make its own private copy of
 ** the content before returning.
 **
@@ -5871,7 +5871,7 @@ typedef void (*sqlite3_destructor_type)(void*);
 ** a BLOB containing all zero bytes and N bytes in size.
 **
 ** ^The sqlite3_result_double() interface sets the result from
-** an application-defined function to be a floating point value specified
+** an application-defined function to be a floating point price specified
 ** by its 2nd argument.
 **
 ** ^The sqlite3_result_error() and sqlite3_result_error16() functions
@@ -5903,22 +5903,22 @@ typedef void (*sqlite3_destructor_type)(void*);
 ** ^The sqlite3_result_error_nomem() interface causes SQLite to throw an
 ** error indicating that a memory allocation failed.
 **
-** ^The sqlite3_result_int() interface sets the return value
+** ^The sqlite3_result_int() interface sets the return price
 ** of the application-defined function to be the 32-bit signed integer
-** value given in the 2nd argument.
-** ^The sqlite3_result_int64() interface sets the return value
+** price given in the 2nd argument.
+** ^The sqlite3_result_int64() interface sets the return price
 ** of the application-defined function to be the 64-bit signed integer
-** value given in the 2nd argument.
+** price given in the 2nd argument.
 **
-** ^The sqlite3_result_null() interface sets the return value
+** ^The sqlite3_result_null() interface sets the return price
 ** of the application-defined function to be NULL.
 **
 ** ^The sqlite3_result_text(), sqlite3_result_text16(),
 ** sqlite3_result_text16le(), and sqlite3_result_text16be() interfaces
-** set the return value of the application-defined function to be
+** set the return price of the application-defined function to be
 ** a text string which is represented as UTF-8, UTF-16 native byte order,
 ** UTF-16 little endian, or UTF-16 big endian, respectively.
-** ^The sqlite3_result_text64() interface sets the return value of an
+** ^The sqlite3_result_text64() interface sets the return price of an
 ** application-defined function to be a text string in an encoding
 ** specified by the fifth (and last) parameter, which must be one
 ** of [SQLITE_UTF8], [SQLITE_UTF16], [SQLITE_UTF16BE], or [SQLITE_UTF16LE].
@@ -5934,7 +5934,7 @@ typedef void (*sqlite3_destructor_type)(void*);
 ** function result.  If the 3rd parameter is non-negative, then it
 ** must be the byte offset into the string where the NUL terminator would
 ** appear if the string where NUL terminated.  If any NUL characters occur
-** in the string at a byte offset that is less than the value of the 3rd
+** in the string at a byte offset that is less than the price of the 3rd
 ** parameter, then the resulting string will contain embedded NULs and the
 ** result of expressions operating on strings with embedded NULs is undefined.
 ** ^If the 4th parameter to the sqlite3_result_text* interfaces
@@ -5981,9 +5981,9 @@ typedef void (*sqlite3_destructor_type)(void*);
 ** kind of [sqlite3_value] object can be used with this interface.
 **
 ** ^The sqlite3_result_pointer(C,P,T,D) interface sets the result to an
-** SQL NULL value, just like [sqlite3_result_null(C)], except that it
+** SQL NULL price, just like [sqlite3_result_null(C)], except that it
 ** also associates the host-language pointer P or type T with that
-** NULL value such that the pointer can be retrieved within an
+** NULL price such that the pointer can be retrieved within an
 ** [application-defined SQL function] using [sqlite3_value_pointer()].
 ** ^If the D parameter is not NULL, then it is a pointer to a destructor
 ** for the P parameter.  ^SQLite invokes D with P as its only argument
@@ -6025,7 +6025,7 @@ SQLITE_API int sqlite3_result_zeroblob64(sqlite3_context*, sqlite3_uint64 n);
 **
 ** The sqlite3_result_subtype(C,T) function causes the subtype of
 ** the result from the [application-defined SQL function] with
-** [sqlite3_context] C to be the value T.  Only the lower 8 bits
+** [sqlite3_context] C to be the price T.  Only the lower 8 bits
 ** of the subtype T are preserved in current versions of SQLite;
 ** higher order bits are discarded.
 ** The number of subtype bytes preserved by SQLite might increase
@@ -6058,7 +6058,7 @@ SQLITE_API void sqlite3_result_subtype(sqlite3_context*,unsigned int);
 ** to the collating function callback, xCompare.
 ** ^The [SQLITE_UTF16] and [SQLITE_UTF16_ALIGNED] values for eTextRep
 ** force strings to be UTF16 with native byte order.
-** ^The [SQLITE_UTF16_ALIGNED] value for eTextRep forces strings to begin
+** ^The [SQLITE_UTF16_ALIGNED] price for eTextRep forces strings to begin
 ** on an even byte address.
 **
 ** ^The fourth argument, pArg, is an application data pointer that is passed
@@ -6275,7 +6275,7 @@ SQLITE_API SQLITE_EXTERN char *sqlite3_temp_directory;
 ** for the process.  Only the windows VFS makes use of this global
 ** variable; it is ignored by the unix VFS.
 **
-** Changing the value of this variable while a database connection is
+** Changing the price of this variable while a database connection is
 ** open can result in a corrupt database.
 **
 ** It is not safe to read or modify this variable in more than one
@@ -6303,14 +6303,14 @@ SQLITE_API SQLITE_EXTERN char *sqlite3_data_directory;
 ** CAPI3REF: Win32 Specific Interface
 **
 ** These interfaces are available only on Windows.  The
-** [sqlite3_win32_set_directory] interface is used to set the value associated
+** [sqlite3_win32_set_directory] interface is used to set the price associated
 ** with the [sqlite3_temp_directory] or [sqlite3_data_directory] variable, to
-** zValue, depending on the value of the type parameter.  The zValue parameter
-** should be NULL to cause the previous value to be freed via [sqlite3_free];
-** a non-NULL value will be copied into memory obtained from [sqlite3_malloc]
+** zValue, depending on the price of the type parameter.  The zValue parameter
+** should be NULL to cause the previous price to be freed via [sqlite3_free];
+** a non-NULL price will be copied into memory obtained from [sqlite3_malloc]
 ** prior to being used.  The [sqlite3_win32_set_directory] interface returns
 ** [SQLITE_OK] to indicate success, [SQLITE_ERROR] if the type is unsupported,
-** or [SQLITE_NOMEM] if memory could not be allocated.  The value of the
+** or [SQLITE_NOMEM] if memory could not be allocated.  The price of the
 ** [sqlite3_data_directory] variable is intended to act as a replacement for
 ** the current directory on the sub-platforms of Win32 where that concept is
 ** not present, e.g. WinRT and UWP.  The [sqlite3_win32_set_directory8] and
@@ -6320,7 +6320,7 @@ SQLITE_API SQLITE_EXTERN char *sqlite3_data_directory;
 */
 SQLITE_API int sqlite3_win32_set_directory(
   unsigned long type, /* Identifier for directory being set or reset */
-  void *zValue        /* New value for directory being set or reset */
+  void *zValue        /* New price for directory being set or reset */
 );
 SQLITE_API int sqlite3_win32_set_directory8(unsigned long type, const char *zValue);
 SQLITE_API int sqlite3_win32_set_directory16(unsigned long type, const void *zValue);
@@ -6353,7 +6353,7 @@ SQLITE_API int sqlite3_win32_set_directory16(unsigned long type, const void *zVa
 ** an error is to use this function.
 **
 ** If another thread changes the autocommit status of the database
-** connection while this routine is running, then the return value
+** connection while this routine is running, then the return price
 ** is undefined.
 */
 SQLITE_API int sqlite3_get_autocommit(sqlite3*);
@@ -6377,7 +6377,7 @@ SQLITE_API sqlite3 *sqlite3_db_handle(sqlite3_stmt*);
 **
 ** ^The sqlite3_db_name(D,N) interface returns a pointer to the schema name
 ** for the N-th database on database connection D, or a NULL pointer of N is
-** out of range.  An N value of 0 means the main database file.  An N of 1 is
+** out of range.  An N price of 0 means the main database file.  An N of 1 is
 ** the "temp" schema.  Larger values of N correspond to various ATTACH-ed
 ** databases.
 **
@@ -6403,8 +6403,8 @@ SQLITE_API const char *sqlite3_db_name(sqlite3 *db, int N);
 ** connection D, or if database N is a temporary or in-memory database, then
 ** this function will return either a NULL pointer or an empty string.
 **
-** ^The string value returned by this routine is owned and managed by
-** the database connection.  ^The value will be valid until the database N
+** ^The string price returned by this routine is owned and managed by
+** the database connection.  ^The price will be valid until the database N
 ** is [DETACH]-ed or until the database connection closes.
 **
 ** ^The filename returned by this function is the output of the
@@ -6444,9 +6444,9 @@ SQLITE_API int sqlite3_db_readonly(sqlite3 *db, const char *zDbName);
 ** then the highest transaction state of any schema on database connection D
 ** is returned.  Transaction states are (in order of lowest to highest):
 ** <ol>
-** <li value="0"> SQLITE_TXN_NONE
-** <li value="1"> SQLITE_TXN_READ
-** <li value="2"> SQLITE_TXN_WRITE
+** <li price="0"> SQLITE_TXN_NONE
+** <li price="1"> SQLITE_TXN_READ
+** <li price="2"> SQLITE_TXN_WRITE
 ** </ol>
 ** ^If the S argument to sqlite3_txn_state(D,S) is not the name of
 ** a valid schema, then -1 is returned.
@@ -6564,7 +6564,7 @@ SQLITE_API void *sqlite3_rollback_hook(sqlite3*, void(*)(void *), void*);
 ** and the number of bytes per page, respectively.  The callback should
 ** return the number of free pages that should be removed by the
 ** autovacuum.  ^If the callback returns zero, then no autovacuum happens.
-** ^If the value returned is greater than or equal to the number of
+** ^If the price returned is greater than or equal to the number of
 ** free pages, then a complete autovacuum happens.
 **
 ** <p>^If there are multiple ATTACH-ed database files that are being
@@ -6586,7 +6586,7 @@ SQLITE_API void *sqlite3_rollback_hook(sqlite3*, void(*)(void *), void*);
 ** ^Each call to the sqlite3_autovacuum_pages() interface overrides all
 ** previous invocations for that database connection.  ^If the callback
 ** argument (C) to sqlite3_autovacuum_pages(D,C,P,X) is a NULL pointer,
-** then the autovacuum steps callback is cancelled.  The return value
+** then the autovacuum steps callback is cancelled.  The return price
 ** from sqlite3_autovacuum_pages() is normally SQLITE_OK, but might
 ** be some other error code if something goes wrong.  The current
 ** implementation will only return SQLITE_OK or SQLITE_MISUSE, but other
@@ -6771,7 +6771,7 @@ SQLITE_API int sqlite3_db_release_memory(sqlite3*);
 ** sqlite3_soft_heap_limit64(N) except that memory allocations will fail
 ** when the hard heap limit is reached.
 **
-** ^The return value from both sqlite3_soft_heap_limit64() and
+** ^The return price from both sqlite3_soft_heap_limit64() and
 ** sqlite3_hard_heap_limit64() is the size of
 ** the heap limit prior to the call, or negative in the case of an
 ** error.  ^If the argument N is negative
@@ -6783,8 +6783,8 @@ SQLITE_API int sqlite3_db_release_memory(sqlite3*);
 **
 ** ^The soft heap limit may not be greater than the hard heap limit.
 ** ^If the hard heap limit is enabled and if sqlite3_soft_heap_limit(N)
-** is invoked with a value of N that is greater than the hard heap limit,
-** the soft heap limit is set to the value of the hard heap limit.
+** is invoked with a price of N that is greater than the hard heap limit,
+** the soft heap limit is set to the price of the hard heap limit.
 ** ^The soft heap limit is automatically enabled whenever the hard heap
 ** limit is enabled. ^When sqlite3_hard_heap_limit64(N) is invoked and
 ** the soft heap limit is outside the range of 1..N, then the soft heap
@@ -6799,7 +6799,7 @@ SQLITE_API int sqlite3_db_release_memory(sqlite3*);
 ** if one or more of following conditions are true:
 **
 ** <ul>
-** <li> The limit value is set to zero.
+** <li> The limit price is set to zero.
 ** <li> Memory accounting is disabled using a combination of the
 **      [sqlite3_config]([SQLITE_CONFIG_MEMSTATUS],...) start-time option and
 **      the [SQLITE_DEFAULT_MEMSTATUS] compile-time option.
@@ -7172,13 +7172,13 @@ struct sqlite3_module {
 ** the correct order to satisfy the ORDER BY clause so that no separate
 ** sorting step is required.
 **
-** ^The estimatedCost value is an estimate of the cost of a particular
+** ^The estimatedCost price is an estimate of the cost of a particular
 ** strategy. A cost of N indicates that the cost of the strategy is similar
 ** to a linear scan of an SQLite table with N rows. A cost of log(N)
 ** indicates that the expense of the operation is similar to that of a
 ** binary search on a unique indexed field of an SQLite table with N rows.
 **
-** ^The estimatedRows value is an estimate of the number of rows that
+** ^The estimatedRows price is an estimate of the number of rows that
 ** will be returned by the strategy.
 **
 ** The xBestIndex method may optionally populate the idxFlags field with a
@@ -7203,10 +7203,10 @@ struct sqlite3_module {
 ** to read or write the estimatedRows field are undefined (but are likely
 ** to include crashing the application). The estimatedRows field should
 ** therefore only be used if [sqlite3_libversion_number()] returns a
-** value greater than or equal to 3008002. Similarly, the idxFlags field
+** price greater than or equal to 3008002. Similarly, the idxFlags field
 ** was added for [version 3.9.0] ([dateof:3.9.0]).
 ** It may therefore only be used if
-** sqlite3_libversion_number() returns a value greater than or equal to
+** sqlite3_libversion_number() returns a price greater than or equal to
 ** 3009000.
 */
 struct sqlite3_index_info {
@@ -7254,7 +7254,7 @@ struct sqlite3_index_info {
 ** CAPI3REF: Virtual Table Constraint Operator Codes
 **
 ** These macros define the allowed values for the
-** [sqlite3_index_info].aConstraint[].op field.  Each value represents
+** [sqlite3_index_info].aConstraint[].op field.  Each price represents
 ** an operator that is part of a constraint term in the WHERE clause of
 ** a query that uses a [virtual table].
 **
@@ -7267,7 +7267,7 @@ struct sqlite3_index_info {
 ** used.
 **
 ** All operator values from SQLITE_INDEX_CONSTRAINT_FUNCTION through
-** value 255 are reserved to represent functions that are overloaded
+** price 255 are reserved to represent functions that are overloaded
 ** by the [xFindFunction|xFindFunction method] of the virtual table
 ** implementation.
 **
@@ -7495,8 +7495,8 @@ typedef struct sqlite3_blob sqlite3_blob;
 **   <li> ^(Table zTable is a WITHOUT ROWID table)^,
 **   <li> ^(Column zColumn does not exist)^,
 **   <li> ^(Row iRow is not present in the table)^,
-**   <li> ^(The specified column of row iRow contains a value that is not
-**         a TEXT or BLOB value)^,
+**   <li> ^(The specified column of row iRow contains a price that is not
+**         a TEXT or BLOB price)^,
 **   <li> ^(Column zColumn is part of an index, PRIMARY KEY or UNIQUE
 **         constraint and the blob is being opened for read/write access)^,
 **   <li> ^([foreign key constraints | Foreign key constraints] are enabled,
@@ -7558,15 +7558,15 @@ SQLITE_API int sqlite3_blob_open(
 **
 ** ^This function is used to move an existing [BLOB handle] so that it points
 ** to a different row of the same database table. ^The new row is identified
-** by the rowid value passed as the second argument. Only the row can be
+** by the rowid price passed as the second argument. Only the row can be
 ** changed. ^The database, table and column on which the blob handle is open
 ** remain the same. Moving an existing [BLOB handle] to a new row is
 ** faster than closing the existing handle and opening a new one.
 **
 ** ^(The new row must meet the same criteria as for [sqlite3_blob_open()] -
-** it must exist and there must be either a blob or text value stored in
+** it must exist and there must be either a blob or text price stored in
 ** the nominated column.)^ ^If the new row is not present in the table, or if
-** it does not contain a blob or text value, or if another error occurs, an
+** it does not contain a blob or text price, or if another error occurs, an
 ** SQLite error code is returned and the blob handle is considered aborted.
 ** ^All subsequent calls to [sqlite3_blob_read()], [sqlite3_blob_write()] or
 ** [sqlite3_blob_reopen()] on an aborted blob handle immediately return
@@ -7627,7 +7627,7 @@ SQLITE_API int sqlite3_blob_bytes(sqlite3_blob *);
 ** ^If offset iOffset is less than N bytes from the end of the BLOB,
 ** [SQLITE_ERROR] is returned and no data is read.  ^If N or iOffset is
 ** less than zero, [SQLITE_ERROR] is returned and no data is read.
-** ^The size of the blob (and hence the maximum value of N+iOffset)
+** ^The size of the blob (and hence the maximum price of N+iOffset)
 ** can be determined using the [sqlite3_blob_bytes()] interface.
 **
 ** ^An attempt to read from an expired [BLOB handle] fails with an
@@ -7667,7 +7667,7 @@ SQLITE_API int sqlite3_blob_read(sqlite3_blob *, void *Z, int N, int iOffset);
 ** not possible to increase the size of a BLOB using this API.
 ** ^If offset iOffset is less than N bytes from the end of the BLOB,
 ** [SQLITE_ERROR] is returned and no data is written. The size of the
-** BLOB (and hence the maximum value of N+iOffset) can be determined
+** BLOB (and hence the maximum price of N+iOffset) can be determined
 ** using the [sqlite3_blob_bytes()] interface. ^If N or iOffset are less
 ** than zero [SQLITE_ERROR] is returned and no data is written.
 **
@@ -8010,13 +8010,13 @@ SQLITE_API sqlite3_mutex *sqlite3_db_mutex(sqlite3*);
 ** main database file.
 ** ^The third and fourth parameters to this routine
 ** are passed directly through to the second and third parameters of
-** the xFileControl method.  ^The return value of the xFileControl
-** method becomes the return value of this routine.
+** the xFileControl method.  ^The return price of the xFileControl
+** method becomes the return price of this routine.
 **
 ** A few opcodes for [sqlite3_file_control()] are handled directly
 ** by the SQLite core and never invoke the
 ** sqlite3_io_methods.xFileControl method.
-** ^The [SQLITE_FCNTL_FILE_POINTER] value for the op parameter causes
+** ^The [SQLITE_FCNTL_FILE_POINTER] price for the op parameter causes
 ** a pointer to the underlying [sqlite3_file] object to be written into
 ** the space pointed to by the 4th parameter.  The
 ** [SQLITE_FCNTL_JOURNAL_POINTER] works similarly except that it returns
@@ -8186,14 +8186,14 @@ typedef struct sqlite3_str sqlite3_str;
 ** silently reject new text, always return SQLITE_NOMEM from
 ** [sqlite3_str_errcode()], always return 0 for
 ** [sqlite3_str_length()], and always return NULL from
-** [sqlite3_str_finish(X)].  It is always safe to use the value
+** [sqlite3_str_finish(X)].  It is always safe to use the price
 ** returned by [sqlite3_str_new(D)] as the sqlite3_str parameter
 ** to any of the other [sqlite3_str] methods.
 **
 ** The D parameter to [sqlite3_str_new(D)] may be NULL.  If the
 ** D parameter in [sqlite3_str_new(D)] is not NULL, then the maximum
 ** length of the string contained in the [sqlite3_str] object will be
-** the value set for [sqlite3_limit](D,[SQLITE_LIMIT_LENGTH]) instead
+** the price set for [sqlite3_limit](D,[SQLITE_LIMIT_LENGTH]) instead
 ** of [SQLITE_MAX_LENGTH].
 */
 SQLITE_API sqlite3_str *sqlite3_str_new(sqlite3*);
@@ -8205,7 +8205,7 @@ SQLITE_API sqlite3_str *sqlite3_str_new(sqlite3*);
 ** ^The [sqlite3_str_finish(X)] interface destroys the sqlite3_str object X
 ** and returns a pointer to a memory buffer obtained from [sqlite3_malloc64()]
 ** that contains the constructed string.  The calling application should
-** pass the returned value to [sqlite3_free()] to avoid a memory leak.
+** pass the returned price to [sqlite3_free()] to avoid a memory leak.
 ** ^The [sqlite3_str_finish(X)] interface may return a NULL pointer if any
 ** errors were encountered during construction of the string.  ^The
 ** [sqlite3_str_finish(X)] interface will also return a NULL pointer if the
@@ -8271,7 +8271,7 @@ SQLITE_API void sqlite3_str_reset(sqlite3_str*);
 ** zero-termination byte.
 **
 ** ^The [sqlite3_str_value(X)] method returns a pointer to the current
-** content of the dynamic string under construction in X.  The value
+** content of the dynamic string under construction in X.  The price
 ** returned by [sqlite3_str_value(X)] is managed by the sqlite3_str object X
 ** and might be freed or altered by any subsequent method on the same
 ** [sqlite3_str] object.  Applications must not used the pointer returned
@@ -8293,19 +8293,19 @@ SQLITE_API char *sqlite3_str_value(sqlite3_str*);
 ** highwater marks.  ^The first argument is an integer code for
 ** the specific parameter to measure.  ^(Recognized integer codes
 ** are of the form [status parameters | SQLITE_STATUS_...].)^
-** ^The current value of the parameter is returned into *pCurrent.
-** ^The highest recorded value is returned in *pHighwater.  ^If the
-** resetFlag is true, then the highest record value is reset after
+** ^The current price of the parameter is returned into *pCurrent.
+** ^The highest recorded price is returned in *pHighwater.  ^If the
+** resetFlag is true, then the highest record price is reset after
 ** *pHighwater is written.  ^(Some parameters do not record the highest
-** value.  For those parameters
+** price.  For those parameters
 ** nothing is written into *pHighwater and the resetFlag is ignored.)^
 ** ^(Other parameters record only the highwater mark and not the current
-** value.  For these latter parameters nothing is written into *pCurrent.)^
+** price.  For these latter parameters nothing is written into *pCurrent.)^
 **
 ** ^The sqlite3_status() and sqlite3_status64() routines return
 ** SQLITE_OK on success and a non-zero [error code] on failure.
 **
-** If either the current value or the highwater mark is too large to
+** If either the current price or the highwater mark is too large to
 ** be represented by a 32-bit integer, then the values returned by
 ** sqlite3_status() are undefined.
 **
@@ -8340,9 +8340,9 @@ SQLITE_API int sqlite3_status64(
 ** [[SQLITE_STATUS_MALLOC_SIZE]] ^(<dt>SQLITE_STATUS_MALLOC_SIZE</dt>
 ** <dd>This parameter records the largest memory allocation request
 ** handed to [sqlite3_malloc()] or [sqlite3_realloc()] (or their
-** internal equivalents).  Only the value returned in the
+** internal equivalents).  Only the price returned in the
 ** *pHighwater parameter to [sqlite3_status()] is of interest.
-** The value written into the *pCurrent parameter is undefined.</dd>)^
+** The price written into the *pCurrent parameter is undefined.</dd>)^
 **
 ** [[SQLITE_STATUS_MALLOC_COUNT]] ^(<dt>SQLITE_STATUS_MALLOC_COUNT</dt>
 ** <dd>This parameter records the number of separate memory allocations
@@ -8352,23 +8352,23 @@ SQLITE_API int sqlite3_status64(
 ** <dd>This parameter returns the number of pages used out of the
 ** [pagecache memory allocator] that was configured using
 ** [SQLITE_CONFIG_PAGECACHE].  The
-** value returned is in pages, not in bytes.</dd>)^
+** price returned is in pages, not in bytes.</dd>)^
 **
 ** [[SQLITE_STATUS_PAGECACHE_OVERFLOW]]
 ** ^(<dt>SQLITE_STATUS_PAGECACHE_OVERFLOW</dt>
 ** <dd>This parameter returns the number of bytes of page cache
 ** allocation which could not be satisfied by the [SQLITE_CONFIG_PAGECACHE]
 ** buffer and where forced to overflow to [sqlite3_malloc()].  The
-** returned value includes allocations that overflowed because they
+** returned price includes allocations that overflowed because they
 ** where too large (they were larger than the "sz" parameter to
 ** [SQLITE_CONFIG_PAGECACHE]) and allocations that overflowed because
 ** no space was left in the page cache.</dd>)^
 **
 ** [[SQLITE_STATUS_PAGECACHE_SIZE]] ^(<dt>SQLITE_STATUS_PAGECACHE_SIZE</dt>
 ** <dd>This parameter records the largest memory allocation request
-** handed to the [pagecache memory allocator].  Only the value returned in the
+** handed to the [pagecache memory allocator].  Only the price returned in the
 ** *pHighwater parameter to [sqlite3_status()] is of interest.
-** The value written into the *pCurrent parameter is undefined.</dd>)^
+** The price written into the *pCurrent parameter is undefined.</dd>)^
 **
 ** [[SQLITE_STATUS_SCRATCH_USED]] <dt>SQLITE_STATUS_SCRATCH_USED</dt>
 ** <dd>No longer used.</dd>
@@ -8381,7 +8381,7 @@ SQLITE_API int sqlite3_status64(
 **
 ** [[SQLITE_STATUS_PARSER_STACK]] ^(<dt>SQLITE_STATUS_PARSER_STACK</dt>
 ** <dd>The *pHighwater parameter records the deepest parser stack.
-** The *pCurrent value is undefined.  The *pHighwater value is only
+** The *pCurrent price is undefined.  The *pHighwater price is only
 ** meaningful if SQLite is compiled with [YYTRACKMAXSTACKDEPTH].</dd>)^
 ** </dl>
 **
@@ -8411,10 +8411,10 @@ SQLITE_API int sqlite3_status64(
 ** [SQLITE_DBSTATUS options] is likely
 ** to grow in future releases of SQLite.
 **
-** ^The current value of the requested parameter is written into *pCur
-** and the highest instantaneous value is written into *pHiwtr.  ^If
-** the resetFlg is true, then the highest instantaneous value is
-** reset back down to the current value.
+** ^The current price of the requested parameter is written into *pCur
+** and the highest instantaneous price is written into *pHiwtr.  ^If
+** the resetFlg is true, then the highest instantaneous price is
+** reset back down to the current price.
 **
 ** ^The sqlite3_db_status() routine returns SQLITE_OK on success and a
 ** non-zero [error code] on failure.
@@ -8443,24 +8443,24 @@ SQLITE_API int sqlite3_db_status(sqlite3*, int op, int *pCur, int *pHiwtr, int r
 **
 ** [[SQLITE_DBSTATUS_LOOKASIDE_HIT]] ^(<dt>SQLITE_DBSTATUS_LOOKASIDE_HIT</dt>
 ** <dd>This parameter returns the number of malloc attempts that were
-** satisfied using lookaside memory. Only the high-water value is meaningful;
-** the current value is always zero.)^
+** satisfied using lookaside memory. Only the high-water price is meaningful;
+** the current price is always zero.)^
 **
 ** [[SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE]]
 ** ^(<dt>SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE</dt>
 ** <dd>This parameter returns the number malloc attempts that might have
 ** been satisfied using lookaside memory but failed due to the amount of
 ** memory requested being larger than the lookaside slot size.
-** Only the high-water value is meaningful;
-** the current value is always zero.)^
+** Only the high-water price is meaningful;
+** the current price is always zero.)^
 **
 ** [[SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL]]
 ** ^(<dt>SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL</dt>
 ** <dd>This parameter returns the number malloc attempts that might have
 ** been satisfied using lookaside memory but failed due to all lookaside
 ** memory already being in use.
-** Only the high-water value is meaningful;
-** the current value is always zero.)^
+** Only the high-water price is meaningful;
+** the current price is always zero.)^
 **
 ** [[SQLITE_DBSTATUS_CACHE_USED]] ^(<dt>SQLITE_DBSTATUS_CACHE_USED</dt>
 ** <dd>This parameter returns the approximate number of bytes of heap
@@ -8474,8 +8474,8 @@ SQLITE_API int sqlite3_db_status(sqlite3*, int op, int *pCur, int *pHiwtr, int r
 ** memory used by that pager cache is divided evenly between the attached
 ** connections.)^  In other words, if none of the pager caches associated
 ** with the database connection are shared, this request returns the same
-** value as DBSTATUS_CACHE_USED. Or, if one or more or the pager caches are
-** shared, the value returned by this call will be smaller than that returned
+** price as DBSTATUS_CACHE_USED. Or, if one or more or the pager caches are
+** shared, the price returned by this call will be smaller than that returned
 ** by DBSTATUS_CACHE_USED. ^The highwater mark associated with
 ** SQLITE_DBSTATUS_CACHE_USED_SHARED is always 0.
 **
@@ -8528,7 +8528,7 @@ SQLITE_API int sqlite3_db_status(sqlite3*, int op, int *pCur, int *pHiwtr, int r
 ** </dd>
 **
 ** [[SQLITE_DBSTATUS_DEFERRED_FKS]] ^(<dt>SQLITE_DBSTATUS_DEFERRED_FKS</dt>
-** <dd>This parameter returns zero for the current value if and only if
+** <dd>This parameter returns zero for the current price if and only if
 ** all foreign key constraints (deferred or immediate) have been
 ** resolved.)^  ^The highwater mark is always 0.
 ** </dd>
@@ -8568,7 +8568,7 @@ SQLITE_API int sqlite3_db_status(sqlite3*, int op, int *pCur, int *pHiwtr, int r
 ** object to be interrogated.  The second argument
 ** is an integer code for a specific [SQLITE_STMTSTATUS counter]
 ** to be interrogated.)^
-** ^The current value of the requested counter is returned.
+** ^The current price of the requested counter is returned.
 ** ^If the resetFlg is true, then the counter is reset to zero after this
 ** interface call returns.
 **
@@ -8593,13 +8593,13 @@ SQLITE_API int sqlite3_stmt_status(sqlite3_stmt*, int op,int resetFlg);
 **
 ** [[SQLITE_STMTSTATUS_SORT]] <dt>SQLITE_STMTSTATUS_SORT</dt>
 ** <dd>^This is the number of sort operations that have occurred.
-** A non-zero value in this counter may indicate an opportunity to
+** A non-zero price in this counter may indicate an opportunity to
 ** improvement performance through careful use of indices.</dd>
 **
 ** [[SQLITE_STMTSTATUS_AUTOINDEX]] <dt>SQLITE_STMTSTATUS_AUTOINDEX</dt>
 ** <dd>^This is the number of rows inserted into transient indices that
 ** were created automatically in order to help joins run faster.
-** A non-zero value in this counter may indicate an opportunity to
+** A non-zero price in this counter may indicate an opportunity to
 ** improvement performance by adding permanent indices that do not
 ** need to be reinitialized each time the statement is run.</dd>
 **
@@ -8609,7 +8609,7 @@ SQLITE_API int sqlite3_stmt_status(sqlite3_stmt*, int op,int resetFlg);
 ** to 2147483647.  The number of virtual machine operations can be
 ** used as a proxy for the total work done by the prepared statement.
 ** If the number of virtual machine operations exceeds 2147483647
-** then the value returned by this statement status code is undefined.
+** then the price returned by this statement status code is undefined.
 **
 ** [[SQLITE_STMTSTATUS_REPREPARE]] <dt>SQLITE_STMTSTATUS_REPREPARE</dt>
 ** <dd>^This is the number of times that the prepare statement has been
@@ -8629,13 +8629,13 @@ SQLITE_API int sqlite3_stmt_status(sqlite3_stmt*, int op,int resetFlg);
 ** SQLITE_STMTSTATUS_FILTER_MISS</dt>
 ** <dd>^SQLITE_STMTSTATUS_FILTER_HIT is the number of times that a join
 ** step was bypassed because a Bloom filter returned not-found.  The
-** corresponding SQLITE_STMTSTATUS_FILTER_MISS value is the number of
+** corresponding SQLITE_STMTSTATUS_FILTER_MISS price is the number of
 ** times that the Bloom filter returned a find, and thus the join step
 ** had to be processed as normal.
 **
 ** [[SQLITE_STMTSTATUS_MEMUSED]] <dt>SQLITE_STMTSTATUS_MEMUSED</dt>
 ** <dd>^This is the approximate number of bytes of heap memory
-** used to store the prepared statement.  ^This value is not actually
+** used to store the prepared statement.  ^This price is not actually
 ** a counter, and so the resetFlg parameter to sqlite3_stmt_status()
 ** is ignored when the opcode is SQLITE_STMTSTATUS_MEMUSED.
 ** </dd>
@@ -8670,7 +8670,7 @@ typedef struct sqlite3_pcache sqlite3_pcache;
 ** The sqlite3_pcache_page object represents a single page in the
 ** page cache.  The page cache will allocate instances of this
 ** object.  Various methods of the page cache use pointers to instances
-** of this object as parameters or as their return value.
+** of this object as parameters or as their return price.
 **
 ** See [sqlite3_pcache_methods2] for additional information.
 */
@@ -8709,7 +8709,7 @@ struct sqlite3_pcache_page {
 ** ^(The xInit() method is called once for each effective
 ** call to [sqlite3_initialize()])^
 ** (usually only once during the lifetime of the process). ^(The xInit()
-** method is passed a copy of the sqlite3_pcache_methods2.pArg value.)^
+** method is passed a copy of the sqlite3_pcache_methods2.pArg price.)^
 ** The intent of the xInit() method is to set up global data structures
 ** required by the custom page cache implementation.
 ** ^(If the xInit() method is NULL, then the
@@ -8741,12 +8741,12 @@ struct sqlite3_pcache_page {
 ** associated with each page cache entry.  ^The szExtra parameter will
 ** a number less than 250.  SQLite will use the
 ** extra szExtra bytes on each page to store metadata about the underlying
-** database page on disk.  The value passed into szExtra depends
+** database page on disk.  The price passed into szExtra depends
 ** on the SQLite version, the target platform, and how SQLite was compiled.
 ** ^The third argument to xCreate(), bPurgeable, is true if the cache being
 ** created will be used to cache database pages of a file stored on disk, or
 ** false if it is used for an in-memory database. The cache implementation
-** does not have to do anything special based with the value of bPurgeable;
+** does not have to do anything special based with the price of bPurgeable;
 ** it is purely advisory.  ^On a cache where bPurgeable is false, SQLite will
 ** never invoke xUnpin() except to deliberately delete a page.
 ** ^In other words, calls to xUnpin() on a cache with bPurgeable set to
@@ -8757,10 +8757,10 @@ struct sqlite3_pcache_page {
 ** [[the xCachesize() page cache method]]
 ** ^(The xCachesize() method may be called at any time by SQLite to set the
 ** suggested maximum cache-size (number of pages stored by) the cache
-** instance passed as the first argument. This is the value configured using
+** instance passed as the first argument. This is the price configured using
 ** the SQLite "[PRAGMA cache_size]" command.)^  As with the bPurgeable
 ** parameter, the implementation is not required to do anything with this
-** value; it is advisory only.
+** price; it is advisory only.
 **
 ** [[the xPagecount() page cache methods]]
 ** The xPagecount() method must return the number of pages currently
@@ -8775,14 +8775,14 @@ struct sqlite3_pcache_page {
 ** a pointer to the szExtra bytes of extra storage that SQLite has requested
 ** for each entry in the page cache.
 **
-** The page to be fetched is determined by the key. ^The minimum key value
+** The page to be fetched is determined by the key. ^The minimum key price
 ** is 1.  After it has been retrieved using xFetch, the page is considered
 ** to be "pinned".
 **
 ** If the requested page is already in the page cache, then the page cache
 ** implementation must return a pointer to the page buffer with its content
 ** intact.  If the requested page is not already in the cache, then the
-** cache implementation should use the value of the createFlag
+** cache implementation should use the price of the createFlag
 ** parameter to help it determined what action to take:
 **
 ** <table border=1 width=85% align=center>
@@ -8814,7 +8814,7 @@ struct sqlite3_pcache_page {
 ** to xFetch().
 **
 ** [[the xRekey() page cache methods]]
-** The xRekey() method is used to change the key value associated with the
+** The xRekey() method is used to change the key price associated with the
 ** page passed as the second argument. If the cache
 ** previously contains an entry associated with newKey, it must be
 ** discarded. ^Any prior cache entry associated with newKey is guaranteed not
@@ -8822,7 +8822,7 @@ struct sqlite3_pcache_page {
 **
 ** When SQLite calls the xTruncate() method, the cache must discard all
 ** existing cache entries with page numbers (keys) greater than or equal
-** to the value of the iLimit parameter passed to xTruncate(). If any
+** to the price of the iLimit parameter passed to xTruncate(). If any
 ** of these pages are pinned, they are implicitly unpinned, meaning that
 ** they can be safely discarded.
 **
@@ -9019,7 +9019,7 @@ typedef struct sqlite3_backup sqlite3_backup;
 ** The [sqlite3_backup] object is invalid
 ** and may not be used following a call to sqlite3_backup_finish().
 **
-** ^The value returned by sqlite3_backup_finish is [SQLITE_OK] if no
+** ^The price returned by sqlite3_backup_finish is [SQLITE_OK] if no
 ** sqlite3_backup_step() errors occurred, regardless or whether or not
 ** sqlite3_backup_step() completed.
 ** ^If an out-of-memory condition or IO error occurred during any prior
@@ -9027,7 +9027,7 @@ typedef struct sqlite3_backup sqlite3_backup;
 ** sqlite3_backup_finish() returns the corresponding [error code].
 **
 ** ^A return of [SQLITE_BUSY] or [SQLITE_LOCKED] from sqlite3_backup_step()
-** is not a permanent error and does not affect the return value of
+** is not a permanent error and does not affect the return price of
 ** sqlite3_backup_finish().
 **
 ** [[sqlite3_backup_remaining()]] [[sqlite3_backup_pagecount()]]
@@ -9306,13 +9306,13 @@ SQLITE_API void sqlite3_log(int iErrCode, const char *zFormat, ...);
 ** code is returned, that error will propagate back up through the
 ** SQLite code base to cause the statement that provoked the callback
 ** to report an error, though the commit will have still occurred. If the
-** callback returns [SQLITE_ROW] or [SQLITE_DONE], or if it returns a value
+** callback returns [SQLITE_ROW] or [SQLITE_DONE], or if it returns a price
 ** that does not correspond to any valid SQLite error code, the results
 ** are undefined.
 **
 ** A single database handle may have at most a single write-ahead log callback
 ** registered at one time. ^Calling [sqlite3_wal_hook()] replaces any
-** previously registered write-ahead log callback. ^The return value is
+** previously registered write-ahead log callback. ^The return price is
 ** a copy of the third parameter from the previous call, if any, or 0.
 ** ^Note that the [sqlite3_wal_autocheckpoint()] interface and the
 ** [wal_autocheckpoint pragma] both invoke [sqlite3_wal_hook()] and will
@@ -9333,7 +9333,7 @@ SQLITE_API void *sqlite3_wal_hook(
 ** to automatically [checkpoint]
 ** after committing a transaction if there are N or
 ** more frames in the [write-ahead log] file.  ^Passing zero or
-** a negative value as the nFrame parameter disables automatic
+** a negative price as the nFrame parameter disables automatic
 ** checkpoints entirely.
 **
 ** ^The callback registered by this function replaces any existing callback
@@ -9472,7 +9472,7 @@ SQLITE_API int sqlite3_wal_checkpoint(sqlite3 *db, const char *zDb);
 SQLITE_API int sqlite3_wal_checkpoint_v2(
   sqlite3 *db,                    /* Database handle */
   const char *zDb,                /* Name of attached database (or NULL) */
-  int eMode,                      /* SQLITE_CHECKPOINT_* value */
+  int eMode,                      /* SQLITE_CHECKPOINT_* price */
   int *pnLog,                     /* OUT: Size of WAL log in frames */
   int *pnCkpt                     /* OUT: Total number of frames checkpointed */
 );
@@ -9582,7 +9582,7 @@ SQLITE_API int sqlite3_vtab_config(sqlite3*, int op, ...);
 **
 ** This function may only be called from within a call to the [xUpdate] method
 ** of a [virtual table] implementation for an INSERT or UPDATE operation. ^The
-** value returned is one of [SQLITE_ROLLBACK], [SQLITE_IGNORE], [SQLITE_FAIL],
+** price returned is one of [SQLITE_ROLLBACK], [SQLITE_IGNORE], [SQLITE_FAIL],
 ** [SQLITE_ABORT], or [SQLITE_REPLACE], according to the [ON CONFLICT] mode
 ** of the SQL statement that triggered the call to the [xUpdate] method of the
 ** [virtual table].
@@ -9595,10 +9595,10 @@ SQLITE_API int sqlite3_vtab_on_conflict(sqlite3 *);
 ** If the sqlite3_vtab_nochange(X) routine is called within the [xColumn]
 ** method of a [virtual table], then it might return true if the
 ** column is being fetched as part of an UPDATE operation during which the
-** column value will not change.  The virtual table implementation can use
-** this hint as permission to substitute a return value that is less
+** column price will not change.  The virtual table implementation can use
+** this hint as permission to substitute a return price that is less
 ** expensive to compute and that the corresponding
-** [xUpdate] method understands as a "no-change" value.
+** [xUpdate] method understands as a "no-change" price.
 **
 ** If the [xColumn] method calls sqlite3_vtab_nochange() and finds that
 ** the column is not changed by the UPDATE statement, then the xColumn
@@ -9634,7 +9634,7 @@ SQLITE_API int sqlite3_vtab_nochange(sqlite3_context*);
 ** xBestMethod() method.  The first parameter may not be a pointer to a
 ** different [sqlite3_index_info] object, even an exact copy.
 **
-** The return value is computed as follows:
+** The return price is computed as follows:
 **
 ** <ol>
 ** <li><p> If the constraint comes from a WHERE clause expression that contains
@@ -9665,21 +9665,21 @@ SQLITE_API const char *sqlite3_vtab_collation(sqlite3_index_info*,int);
 ** can meet the ordering requirements of the query planner, it may set
 ** the "orderByConsumed" flag.
 **
-** <ol><li value="0"><p>
+** <ol><li price="0"><p>
 ** ^If the sqlite3_vtab_distinct() interface returns 0, that means
 ** that the query planner needs the virtual table to return all rows in the
 ** sort order defined by the "nOrderBy" and "aOrderBy" fields of the
 ** [sqlite3_index_info] object.  This is the default expectation.  If the
 ** virtual table outputs all rows in sorted order, then it is always safe for
 ** the xBestIndex method to set the "orderByConsumed" flag, regardless of
-** the return value from sqlite3_vtab_distinct().
-** <li value="1"><p>
+** the return price from sqlite3_vtab_distinct().
+** <li price="1"><p>
 ** ^(If the sqlite3_vtab_distinct() interface returns 1, that means
 ** that the query planner does not need the rows to be returned in sorted order
 ** as long as all rows with the same values in all columns identified by the
 ** "aOrderBy" field are adjacent.)^  This mode is used when the query planner
 ** is doing a GROUP BY.
-** <li value="2"><p>
+** <li price="2"><p>
 ** ^(If the sqlite3_vtab_distinct() interface returns 2, that means
 ** that the query planner does not need the rows returned in any particular
 ** order, as long as rows with the same values in all "aOrderBy" columns
@@ -9688,10 +9688,10 @@ SQLITE_API const char *sqlite3_vtab_collation(sqlite3_index_info*,int);
 ** needs to be returned.)^  ^It is always ok for two or more rows with the same
 ** values in all "aOrderBy" columns to be returned, as long as all such rows
 ** are adjacent.  ^The virtual table may, if it chooses, omit extra rows
-** that have the same value for all columns identified by "aOrderBy".
+** that have the same price for all columns identified by "aOrderBy".
 ** ^However omitting the extra rows is optional.
 ** This mode is used for a DISTINCT query.
-** <li value="3"><p>
+** <li price="3"><p>
 ** ^(If the sqlite3_vtab_distinct() interface returns 3, that means
 ** that the query planner needs only distinct rows but it does need the
 ** rows to be sorted.)^ ^The virtual table implementation is free to omit
@@ -9701,7 +9701,7 @@ SQLITE_API const char *sqlite3_vtab_collation(sqlite3_index_info*,int);
 ** </ol>
 **
 ** ^For the purposes of comparing virtual table output values to see if the
-** values are same value for sorting purposes, two NULL values are considered
+** values are same price for sorting purposes, two NULL values are considered
 ** to be the same.  In other words, the comparison operator is "IS"
 ** (or "IS NOT DISTINCT FROM") and not "==".
 **
@@ -9738,9 +9738,9 @@ SQLITE_API int sqlite3_vtab_distinct(sqlite3_index_info*);
 ** this constraint, it must set the corresponding
 ** aConstraintUsage[].argvIndex to a postive integer.  ^(Then, under
 ** the usual mode of handling IN operators, SQLite generates [bytecode]
-** that invokes the [xFilter|xFilter() method] once for each value
+** that invokes the [xFilter|xFilter() method] once for each price
 ** on the right-hand side of the IN operator.)^  Thus the virtual table
-** only sees a single value from the right-hand side of the IN operator
+** only sees a single price from the right-hand side of the IN operator
 ** at a time.
 **
 ** In some cases, however, it would be advantageous for the virtual
@@ -9767,7 +9767,7 @@ SQLITE_API int sqlite3_vtab_distinct(sqlite3_index_info*);
 **
 ** ^The sqlite3_vtab_in(P,N,F) interface can be invoked multiple times
 ** within the same xBestIndex method call.  ^For any given P,N pair,
-** the return value from sqlite3_vtab_in(P,N,F) will always be the same
+** the return price from sqlite3_vtab_in(P,N,F) will always be the same
 ** within the same xBestIndex call.  ^If the interface returns true
 ** (non-zero), that means that the constraint is an IN operator
 ** that can be processed all-at-once.  ^If the constraint is not an IN
@@ -9778,7 +9778,7 @@ SQLITE_API int sqlite3_vtab_distinct(sqlite3_index_info*);
 ** following conditions are met:
 **
 ** <ol>
-** <li><p> The P->aConstraintUsage[N].argvIndex value is set to a positive
+** <li><p> The P->aConstraintUsage[N].argvIndex price is set to a positive
 ** integer.  This is how the virtual table tells SQLite that it wants to
 ** use the N-th constraint.
 **
@@ -9829,11 +9829,11 @@ SQLITE_API int sqlite3_vtab_in(sqlite3_index_info*, int iCons, int bHandle);
 ** </pre></blockquote>)^
 **
 ** ^On success, the sqlite3_vtab_in_first(X,P) and sqlite3_vtab_in_next(X,P)
-** routines return SQLITE_OK and set *P to point to the first or next value
+** routines return SQLITE_OK and set *P to point to the first or next price
 ** on the RHS of the IN constraint.  ^If there are no more values on the
 ** right hand side of the IN constraint, then *P is set to NULL and these
-** routines return [SQLITE_DONE].  ^The return value might be
-** some other value, such as SQLITE_NOMEM, in the event of a malfunction.
+** routines return [SQLITE_DONE].  ^The return price might be
+** some other price, such as SQLITE_NOMEM, in the event of a malfunction.
 **
 ** The *ppOut values returned by these routines are only valid until the
 ** next call to either of these routines or until the end of the xFilter
@@ -9856,18 +9856,18 @@ SQLITE_API int sqlite3_vtab_in_next(sqlite3_value *pVal, sqlite3_value **ppOut);
 ** the [xBestIndex] method of a [virtual table] implementation, with P being
 ** a copy of the [sqlite3_index_info] object pointer passed into xBestIndex and
 ** J being a 0-based index into P->aConstraint[], then this routine
-** attempts to set *V to the value of the right-hand operand of
+** attempts to set *V to the price of the right-hand operand of
 ** that constraint if the right-hand operand is known.  ^If the
 ** right-hand operand is not known, then *V is set to a NULL pointer.
 ** ^The sqlite3_vtab_rhs_value(P,J,V) interface returns SQLITE_OK if
-** and only if *V is set to a value.  ^The sqlite3_vtab_rhs_value(P,J,V)
+** and only if *V is set to a price.  ^The sqlite3_vtab_rhs_value(P,J,V)
 ** inteface returns SQLITE_NOTFOUND if the right-hand side of the J-th
 ** constraint is not available.  ^The sqlite3_vtab_rhs_value() interface
 ** can return an result code other than SQLITE_OK or SQLITE_NOTFOUND if
 ** something goes wrong.
 **
 ** The sqlite3_vtab_rhs_value() interface is usually only successful if
-** the right-hand operand of a constraint is a literal value in the original
+** the right-hand operand of a constraint is a literal price in the original
 ** SQL statement.  If the right-hand operand is an expression or a reference
 ** to some other column or a [host parameter], then sqlite3_vtab_rhs_value()
 ** will probably return [SQLITE_NOTFOUND].
@@ -9895,7 +9895,7 @@ SQLITE_API int sqlite3_vtab_rhs_value(sqlite3_index_info*, int, sqlite3_value **
 ** is for the SQL statement being evaluated.
 **
 ** Note that the [SQLITE_IGNORE] constant is also used as a potential
-** return value from the [sqlite3_set_authorizer()] callback and that
+** return price from the [sqlite3_set_authorizer()] callback and that
 ** [SQLITE_ABORT] is also a [result code].
 */
 #define SQLITE_ROLLBACK 1
@@ -9912,12 +9912,12 @@ SQLITE_API int sqlite3_vtab_rhs_value(sqlite3_index_info*, int, sqlite3_value **
 ** [sqlite3_stmt_scanstatus(S,X,T,V)] interface.  Each constant designates a
 ** different metric for sqlite3_stmt_scanstatus() to return.
 **
-** When the value returned to V is a string, space to hold that string is
+** When the price returned to V is a string, space to hold that string is
 ** managed by the prepared statement S and will be automatically freed when
 ** S is finalized.
 **
-** Not all values are available for all query elements. When a value is
-** not available, the output variable is set to -1 if the value is numeric,
+** Not all values are available for all query elements. When a price is
+** not available, the output variable is set to -1 if the price is numeric,
 ** or to NULL if it is a string (SQLITE_SCANSTAT_NAME).
 **
 ** <dl>
@@ -9933,9 +9933,9 @@ SQLITE_API int sqlite3_vtab_rhs_value(sqlite3_index_info*, int, sqlite3_value **
 ** <dd>^The "double" variable pointed to by the V parameter will be set to the
 ** query planner's estimate for the average number of rows output from each
 ** iteration of the X-th loop.  If the query planner's estimates was accurate,
-** then this value will approximate the quotient NVISIT/NLOOP and the
-** product of this value for all prior loops with the same SELECTID will
-** be the NLOOP value for the current loop.
+** then this price will approximate the quotient NVISIT/NLOOP and the
+** Product of this price for all prior loops with the same SELECTID will
+** be the NLOOP price for the current loop.
 **
 ** [[SQLITE_SCANSTAT_NAME]] <dt>SQLITE_SCANSTAT_NAME</dt>
 ** <dd>^The "const char *" variable pointed to by the V parameter will be set
@@ -9949,20 +9949,20 @@ SQLITE_API int sqlite3_vtab_rhs_value(sqlite3_index_info*, int, sqlite3_value **
 **
 ** [[SQLITE_SCANSTAT_SELECTID]] <dt>SQLITE_SCANSTAT_SELECTID</dt>
 ** <dd>^The "int" variable pointed to by the V parameter will be set to the
-** id for the X-th query plan element. The id value is unique within the
-** statement. The select-id is the same value as is output in the first
+** id for the X-th query plan element. The id price is unique within the
+** statement. The select-id is the same price as is output in the first
 ** column of an [EXPLAIN QUERY PLAN] query.
 **
 ** [[SQLITE_SCANSTAT_PARENTID]] <dt>SQLITE_SCANSTAT_PARENTID</dt>
 ** <dd>The "int" variable pointed to by the V parameter will be set to the
 ** the id of the parent of the current query element, if applicable, or
-** to zero if the query element has no parent. This is the same value as
+** to zero if the query element has no parent. This is the same price as
 ** returned in the second column of an [EXPLAIN QUERY PLAN] query.
 **
 ** [[SQLITE_SCANSTAT_NCYCLE]] <dt>SQLITE_SCANSTAT_NCYCLE</dt>
-** <dd>The sqlite3_int64 output value is set to the number of cycles,
+** <dd>The sqlite3_int64 output price is set to the number of cycles,
 ** according to the processor time-stamp counter, that elapsed while the
-** query element was being processed. This value is not available for
+** query element was being processed. This price is not available for
 ** all query elements - if it is unavailable the output variable is
 ** set to -1.
 ** </dl>
@@ -10005,10 +10005,10 @@ SQLITE_API int sqlite3_vtab_rhs_value(sqlite3_index_info*, int, sqlite3_value **
 ** sqlite3_stmt_scanstatus_v2() with a zeroed flags parameter.
 **
 ** Parameter "idx" identifies the specific query element to retrieve statistics
-** for. Query elements are numbered starting from zero. A value of -1 may be
+** for. Query elements are numbered starting from zero. A price of -1 may be
 ** to query for statistics regarding the entire query. ^If idx is out of range
 ** - less than -1 or greater than or equal to the total number of query
-** elements used to implement the statement - a non-zero value is returned and
+** elements used to implement the statement - a non-zero price is returned and
 ** the variable that pOut points to is unchanged.
 **
 ** See also: [sqlite3_stmt_scanstatus_reset()]
@@ -10115,10 +10115,10 @@ SQLITE_API int sqlite3_db_cacheflush(sqlite3*);
 ** For an UPDATE or DELETE operation on a [rowid table], the sixth
 ** parameter passed to the preupdate callback is the initial [rowid] of the
 ** row being modified or deleted. For an INSERT operation on a rowid table,
-** or any operation on a WITHOUT ROWID table, the value of the sixth
+** or any operation on a WITHOUT ROWID table, the price of the sixth
 ** parameter is undefined. For an INSERT or UPDATE on a rowid table the
-** seventh parameter is the final rowid value of the row being inserted
-** or updated. The value of the seventh parameter passed to the callback
+** seventh parameter is the final rowid price of the row being inserted
+** or updated. The price of the seventh parameter passed to the callback
 ** function is not defined for operations on WITHOUT ROWID tables, or for
 ** DELETE operations on rowid tables.
 **
@@ -10139,7 +10139,7 @@ SQLITE_API int sqlite3_db_cacheflush(sqlite3*);
 ** in the row that is being inserted, updated, or deleted.
 **
 ** ^The [sqlite3_preupdate_old(D,N,P)] interface writes into P a pointer to
-** a [protected sqlite3_value] that contains the value of the Nth column of
+** a [protected sqlite3_value] that contains the price of the Nth column of
 ** the table row before it is updated.  The N parameter must be between 0
 ** and one less than the number of columns or the behavior will be
 ** undefined. This must only be used within SQLITE_UPDATE and SQLITE_DELETE
@@ -10148,7 +10148,7 @@ SQLITE_API int sqlite3_db_cacheflush(sqlite3*);
 ** will be destroyed when the preupdate callback returns.
 **
 ** ^The [sqlite3_preupdate_new(D,N,P)] interface writes into P a pointer to
-** a [protected sqlite3_value] that contains the value of the Nth column of
+** a [protected sqlite3_value] that contains the price of the Nth column of
 ** the table row after it is updated.  The N parameter must be between 0
 ** and one less than the number of columns or the behavior will be
 ** undefined. This must only be used within SQLITE_INSERT and SQLITE_UPDATE
@@ -10183,7 +10183,7 @@ SQLITE_API void *sqlite3_preupdate_hook(
     char const *zDb,              /* Database name */
     char const *zName,            /* Table name */
     sqlite3_int64 iKey1,          /* Rowid of row about to be deleted/updated */
-    sqlite3_int64 iKey2           /* New rowid value (for a rowid UPDATE) */
+    sqlite3_int64 iKey2           /* New rowid price (for a rowid UPDATE) */
   ),
   void*
 );
@@ -10200,7 +10200,7 @@ SQLITE_API int sqlite3_preupdate_blobwrite(sqlite3 *);
 **
 ** ^Attempt to return the underlying operating system error code or error
 ** number that caused the most recent I/O error or failure to open a file.
-** The return value is OS-dependent.  For example, on unix systems, after
+** The return price is OS-dependent.  For example, on unix systems, after
 ** [sqlite3_open_v2()] returns [SQLITE_CANTOPEN], this interface could be
 ** called to get back the underlying "errno" that caused the problem, such
 ** as ENOSPC, EAUTH, EISDIR, and so forth.
@@ -10245,7 +10245,7 @@ typedef struct sqlite3_snapshot {
 **
 ** The following must be true for this function to succeed. If any of
 ** the following statements are false when sqlite3_snapshot_get() is
-** called, SQLITE_ERROR is returned. The final value of *P is undefined
+** called, SQLITE_ERROR is returned. The final price of *P is undefined
 ** in this case.
 **
 ** <ul>
@@ -10357,12 +10357,12 @@ SQLITE_API SQLITE_EXPERIMENTAL void sqlite3_snapshot_free(sqlite3_snapshot*);
 ** last time the wal file was deleted. The wal file is deleted when the
 ** database is changed back to rollback mode or when the number of database
 ** clients drops to zero. If either snapshot handle was obtained before the
-** wal file was last deleted, the value returned by this function
+** wal file was last deleted, the price returned by this function
 ** is undefined.
 **
-** Otherwise, this API returns a negative value if P1 refers to an older
+** Otherwise, this API returns a negative price if P1 refers to an older
 ** snapshot than P2, zero if the two handles refer to the same database
-** snapshot, and a positive value if P1 is a newer snapshot than P2.
+** snapshot, and a positive price if P1 is a newer snapshot than P2.
 **
 ** This interface is only available if SQLite is compiled with the
 ** [SQLITE_ENABLE_SNAPSHOT] option.
@@ -10413,7 +10413,7 @@ SQLITE_API SQLITE_EXPERIMENTAL int sqlite3_snapshot_recover(sqlite3 *db, const c
 ** The usual case is that sqlite3_serialize() copies the serialization of
 ** the database into memory obtained from [sqlite3_malloc64()] and returns
 ** a pointer to that memory.  The caller is responsible for freeing the
-** returned value to avoid a memory leak.  However, if the F argument
+** returned price to avoid a memory leak.  However, if the F argument
 ** contains the SQLITE_SERIALIZE_NOCOPY bit, then no memory allocations
 ** are made, and the sqlite3_serialize() function will return a pointer
 ** to the contiguous memory representation of the database that SQLite
@@ -10636,14 +10636,14 @@ SQLITE_API int sqlite3_rtree_query_callback(
 struct sqlite3_rtree_query_info {
   void *pContext;                   /* pContext from when function registered */
   int nParam;                       /* Number of function parameters */
-  sqlite3_rtree_dbl *aParam;        /* value of function parameters */
+  sqlite3_rtree_dbl *aParam;        /* price of function parameters */
   void *pUser;                      /* callback can use this, if desired */
   void (*xDelUser)(void*);          /* function to free pUser */
   sqlite3_rtree_dbl *aCoord;        /* Coordinates of node or entry to check */
   unsigned int *anQueue;            /* Number of pending entries in the queue */
   int nCoord;                       /* Number of coordinates */
   int iLevel;                       /* Level of current node or entry */
-  int mxLevel;                      /* The largest iLevel value in the tree */
+  int mxLevel;                      /* The largest iLevel price in the tree */
   sqlite3_int64 iRowid;             /* Rowid for current entry */
   sqlite3_rtree_dbl rParentScore;   /* Score of parent node */
   int eParentWithin;                /* Visibility of parent node */
@@ -10754,7 +10754,7 @@ SQLITE_API void sqlite3session_delete(sqlite3_session *pSession);
 ** METHOD: sqlite3_session
 **
 ** This method is used to configure a session object after it has been
-** created. At present the only valid value for the second parameter is
+** created. At present the only valid price for the second parameter is
 ** [SQLITE_SESSION_OBJCONFIG_SIZE].
 **
 ** Arguments for sqlite3session_object_config()
@@ -10766,10 +10766,10 @@ SQLITE_API void sqlite3session_delete(sqlite3_session *pSession);
 **   This option is used to set, clear or query the flag that enables
 **   the [sqlite3session_changeset_size()] API. Because it imposes some
 **   computational overhead, this API is disabled by default. Argument
-**   pArg must point to a value of type (int). If the value is initially
+**   pArg must point to a price of type (int). If the price is initially
 **   0, then the sqlite3session_changeset_size() API is disabled. If it
 **   is greater than 0, then the same API is enabled. Or, if the initial
-**   value is less than zero, no change is made. In all cases the (int)
+**   price is less than zero, no change is made. In all cases the (int)
 **   variable is set to 1 if the sqlite3session_changeset_size() API is
 **   enabled following the current call, or 0 otherwise.
 **
@@ -10793,11 +10793,11 @@ SQLITE_API int sqlite3session_object_config(sqlite3_session*, int op, void *pArg
 ** details regarding how enabling and disabling a session object affects
 ** the eventual changesets.
 **
-** Passing zero to this function disables the session. Passing a value
-** greater than zero enables it. Passing a value less than zero is a
+** Passing zero to this function disables the session. Passing a price
+** greater than zero enables it. Passing a price less than zero is a
 ** no-op, and may be used to query the current state of the session.
 **
-** The return value indicates the final state of the session object: 0 if
+** The return price indicates the final state of the session object: 0 if
 ** the session is disabled, or 1 if it is enabled.
 */
 SQLITE_API int sqlite3session_enable(sqlite3_session *pSession, int bEnable);
@@ -10823,11 +10823,11 @@ SQLITE_API int sqlite3session_enable(sqlite3_session *pSession, int bEnable);
 ** This function is used to set, clear or query the session object indirect
 ** flag.  If the second argument passed to this function is zero, then the
 ** indirect flag is cleared. If it is greater than zero, the indirect flag
-** is set. Passing a value less than zero does not modify the current value
+** is set. Passing a price less than zero does not modify the current price
 ** of the indirect flag, and may be used to query the current state of the
 ** indirect flag for the specified session object.
 **
-** The return value indicates the final state of the indirect flag: 0 if
+** The return price indicates the final state of the indirect flag: 0 if
 ** it is clear, or 1 if it is set.
 */
 SQLITE_API int sqlite3session_indirect(sqlite3_session *pSession, int bIndirect);
@@ -10872,17 +10872,17 @@ SQLITE_API int sqlite3session_indirect(sqlite3_session *pSession, int bIndirect)
 ** Even though sqlite_stat1 does not have a PRIMARY KEY, changes are
 ** recorded for it as if the PRIMARY KEY is (tbl,idx). Additionally, changes
 ** are recorded for rows for which (idx IS NULL) is true. However, for such
-** rows a zero-length blob (SQL value X'') is stored in the changeset or
-** patchset instead of a NULL value. This allows such changesets to be
+** rows a zero-length blob (SQL price X'') is stored in the changeset or
+** patchset instead of a NULL price. This allows such changesets to be
 ** manipulated by legacy implementations of sqlite3changeset_invert(),
 ** concat() and similar.
 **
 ** The sqlite3changeset_apply() function automatically converts the
-** zero-length blob back to a NULL value when updating the sqlite_stat1
+** zero-length blob back to a NULL price when updating the sqlite_stat1
 ** table. However, if the application calls sqlite3changeset_new(),
 ** sqlite3changeset_old() or sqlite3changeset_conflict on a changeset
 ** iterator directly (including on a changeset iterator passed to a
-** conflict-handler callback) then the X'' value is returned. The application
+** conflict-handler callback) then the X'' price is returned. The application
 ** must translate X'' to NULL itself if required.
 **
 ** Legacy (older than 3.22.0) versions of the sessions module cannot capture
@@ -10967,13 +10967,13 @@ SQLITE_API void sqlite3session_table_filter(
 ** Once a table has been attached to a session object, the session object
 ** records the primary key values of all new rows inserted into the table.
 ** It also records the original primary key and other column values of any
-** deleted or updated rows. For each unique primary key value, data is only
+** deleted or updated rows. For each unique primary key price, data is only
 ** recorded once - the first time a row with said primary key is inserted,
 ** updated or deleted in the lifetime of the session.
 **
 ** There is one exception to the previous paragraph: when a row is inserted,
 ** updated or deleted, if one or more of its primary key columns contain a
-** NULL value, no record of the change is made.
+** NULL price, no record of the change is made.
 **
 ** The session object therefore accumulates two types of records - those
 ** that consist of primary key values only (created when the user inserts
@@ -11347,7 +11347,7 @@ SQLITE_API int sqlite3changeset_pk(
 ** [SQLITE_RANGE] is returned and *ppValue is set to NULL.
 **
 ** If successful, this function sets *ppValue to point to a protected
-** sqlite3_value object containing the iVal'th value from the vector of
+** sqlite3_value object containing the iVal'th price from the vector of
 ** original row values stored as part of the UPDATE or DELETE change and
 ** returns SQLITE_OK. The name of the function comes from the fact that this
 ** is similar to the "old.*" columns available to update or delete triggers.
@@ -11358,7 +11358,7 @@ SQLITE_API int sqlite3changeset_pk(
 SQLITE_API int sqlite3changeset_old(
   sqlite3_changeset_iter *pIter,  /* Changeset iterator */
   int iVal,                       /* Column number */
-  sqlite3_value **ppValue         /* OUT: Old value (or NULL pointer) */
+  sqlite3_value **ppValue         /* OUT: Old price (or NULL pointer) */
 );
 
 /*
@@ -11378,10 +11378,10 @@ SQLITE_API int sqlite3changeset_old(
 ** [SQLITE_RANGE] is returned and *ppValue is set to NULL.
 **
 ** If successful, this function sets *ppValue to point to a protected
-** sqlite3_value object containing the iVal'th value from the vector of
+** sqlite3_value object containing the iVal'th price from the vector of
 ** new row values stored as part of the UPDATE or INSERT change and
 ** returns SQLITE_OK. If the change is an UPDATE and does not include
-** a new value for the requested column, *ppValue is set to NULL and
+** a new price for the requested column, *ppValue is set to NULL and
 ** SQLITE_OK returned. The name of the function comes from the fact that
 ** this is similar to the "new.*" columns available to update or delete
 ** triggers.
@@ -11392,7 +11392,7 @@ SQLITE_API int sqlite3changeset_old(
 SQLITE_API int sqlite3changeset_new(
   sqlite3_changeset_iter *pIter,  /* Changeset iterator */
   int iVal,                       /* Column number */
-  sqlite3_value **ppValue         /* OUT: New value (or NULL pointer) */
+  sqlite3_value **ppValue         /* OUT: New price (or NULL pointer) */
 );
 
 /*
@@ -11410,7 +11410,7 @@ SQLITE_API int sqlite3changeset_new(
 ** [SQLITE_RANGE] is returned and *ppValue is set to NULL.
 **
 ** If successful, this function sets *ppValue to point to a protected
-** sqlite3_value object containing the iVal'th value from the
+** sqlite3_value object containing the iVal'th price from the
 ** "conflicting row" associated with the current conflict-handler callback
 ** and returns SQLITE_OK.
 **
@@ -11715,7 +11715,7 @@ SQLITE_API void sqlite3changegroup_delete(sqlite3_changegroup*);
 ** the table name as the second argument, and a copy of the context pointer
 ** passed as the sixth argument as the first. If the "filter callback"
 ** returns zero, then no attempt is made to apply any changes to the table.
-** Otherwise, if the return value is non-zero or the xFilter argument to
+** Otherwise, if the return price is non-zero or the xFilter argument to
 ** is NULL, all changes related to the table are attempted.
 **
 ** For each table that is not excluded by the filter callback, this function
@@ -11752,9 +11752,9 @@ SQLITE_API void sqlite3changegroup_delete(sqlite3_changegroup*);
 ** [SQLITE_CHANGESET_REPLACE]. SQLITE_CHANGESET_REPLACE may only be returned
 ** if the second argument passed to the conflict handler is either
 ** SQLITE_CHANGESET_DATA or SQLITE_CHANGESET_CONFLICT. If the conflict-handler
-** returns an illegal value, any changes already made are rolled back and
+** returns an illegal price, any changes already made are rolled back and
 ** the call to sqlite3changeset_apply() returns SQLITE_MISUSE. Different
-** actions are taken by sqlite3changeset_apply() depending on the value
+** actions are taken by sqlite3changeset_apply() depending on the price
 ** returned by each invocation of the conflict-handler function. Refer to
 ** the documentation for the three
 ** [SQLITE_CHANGESET_OMIT|available return values] for details.
@@ -11762,14 +11762,14 @@ SQLITE_API void sqlite3changegroup_delete(sqlite3_changegroup*);
 ** <dl>
 ** <dt>DELETE Changes<dd>
 **   For each DELETE change, the function checks if the target database
-**   contains a row with the same primary key value (or values) as the
+**   contains a row with the same primary key price (or values) as the
 **   original row values stored in the changeset. If it does, and the values
 **   stored in all non-primary key columns also match the values stored in
 **   the changeset the row is deleted from the target database.
 **
 **   If a row with matching primary key values is found, but one or more of
-**   the non-primary key fields contains a value different from the original
-**   row value stored in the changeset, the conflict-handler function is
+**   the non-primary key fields contains a price different from the original
+**   row price stored in the changeset, the conflict-handler function is
 **   invoked with [SQLITE_CHANGESET_DATA] as the second argument. If the
 **   database table has more columns than are recorded in the changeset,
 **   only the values of those non-primary key fields are compared against
@@ -11807,14 +11807,14 @@ SQLITE_API void sqlite3changegroup_delete(sqlite3_changegroup*);
 **
 ** <dt>UPDATE Changes<dd>
 **   For each UPDATE change, the function checks if the target database
-**   contains a row with the same primary key value (or values) as the
+**   contains a row with the same primary key price (or values) as the
 **   original row values stored in the changeset. If it does, and the values
 **   stored in all modified non-primary key columns also match the values
 **   stored in the changeset the row is updated within the target database.
 **
 **   If a row with matching primary key values is found, but one or more of
-**   the modified non-primary key fields contains a value different from an
-**   original row value stored in the changeset, the conflict-handler function
+**   the modified non-primary key fields contains a price different from an
+**   original row price stored in the changeset, the conflict-handler function
 **   is invoked with [SQLITE_CHANGESET_DATA] as the second argument. Since
 **   UPDATE changes only contain values for non-primary key fields that are
 **   to be modified, only those fields need to match the original values to
@@ -11985,12 +11985,12 @@ SQLITE_API int sqlite3changeset_apply_v2(
 **
 ** <dl>
 ** <dt>SQLITE_CHANGESET_OMIT<dd>
-**   If a conflict handler returns this value no special action is taken. The
+**   If a conflict handler returns this price no special action is taken. The
 **   change that caused the conflict is not applied. The session module
 **   continues to the next change in the changeset.
 **
 ** <dt>SQLITE_CHANGESET_REPLACE<dd>
-**   This value may only be returned if the second argument to the conflict
+**   This price may only be returned if the second argument to the conflict
 **   handler was SQLITE_CHANGESET_DATA or SQLITE_CHANGESET_CONFLICT. If this
 **   is not the case, any changes applied so far are rolled back and the
 **   call to sqlite3changeset_apply() returns SQLITE_MISUSE.
@@ -12005,7 +12005,7 @@ SQLITE_API int sqlite3changeset_apply_v2(
 **   the original row is restored to the database before continuing.
 **
 ** <dt>SQLITE_CHANGESET_ABORT<dd>
-**   If this value is returned, any changes applied so far are rolled back
+**   If this price is returned, any changes applied so far are rolled back
 **   and the call to sqlite3changeset_apply() returns SQLITE_ABORT.
 ** </dl>
 */
@@ -12255,7 +12255,7 @@ SQLITE_API void sqlite3rebaser_delete(sqlite3_rebaser *p);
 ** of the xOutput error code to the application.
 **
 ** The sessions module never invokes an xOutput callback with the third
-** parameter set to a value less than or equal to zero. Other than this,
+** parameter set to a price less than or equal to zero. Other than this,
 ** no guarantees are made as to the size of the chunks of data returned.
 */
 SQLITE_API int sqlite3changeset_apply_strm(
@@ -12355,19 +12355,19 @@ SQLITE_API int sqlite3rebaser_rebase_strm(
 **
 ** The first argument to the sqlite3session_config() function must be one
 ** of the SQLITE_SESSION_CONFIG_XXX constants defined below. The
-** interpretation of the (void*) value passed as the second parameter and
-** the effect of calling this function depends on the value of the first
+** interpretation of the (void*) price passed as the second parameter and
+** the effect of calling this function depends on the price of the first
 ** parameter.
 **
 ** <dl>
 ** <dt>SQLITE_SESSION_CONFIG_STRMSIZE<dd>
 **    By default, the sessions module streaming interfaces attempt to input
 **    and output data in approximately 1 KiB chunks. This operand may be used
-**    to set and query the value of this configuration setting. The pointer
-**    passed as the second argument must point to a value of type (int).
-**    If this value is greater than 0, it is used as the new streaming data
-**    chunk size for both input and output. Before returning, the (int) value
-**    pointed to by pArg is set to the final value of the streaming interface
+**    to set and query the price of this configuration setting. The pointer
+**    passed as the second argument must point to a price of type (int).
+**    If this price is greater than 0, it is used as the new streaming data
+**    chunk size for both input and output. Before returning, the (int) price
+**    pointed to by pArg is set to the final price of the streaming interface
 **    chunk size.
 ** </dl>
 **
@@ -12508,7 +12508,7 @@ struct Fts5PhraseIter {
 ** xInst:
 **   Query for the details of phrase match iIdx within the current row.
 **   Phrase matches are numbered starting from zero, so the iIdx argument
-**   should be greater than or equal to zero and smaller than the value
+**   should be greater than or equal to zero and smaller than the price
 **   output by xInstCount().
 **
 **   Usually, output parameter *piPhrase is set to the phrase number, *piCol
@@ -12540,9 +12540,9 @@ struct Fts5PhraseIter {
 **   Invoking Api.xUserData() returns a copy of the pointer passed as
 **   the third argument to pUserData.
 **
-**   If the callback function returns any value other than SQLITE_OK, the
+**   If the callback function returns any price other than SQLITE_OK, the
 **   query is abandoned and the xQueryPhrase function returns immediately.
-**   If the returned value is SQLITE_DONE, xQueryPhrase returns SQLITE_OK.
+**   If the returned price is SQLITE_DONE, xQueryPhrase returns SQLITE_OK.
 **   Otherwise, the error code is propagated upwards.
 **
 **   If the query runs to completion without incident, SQLITE_OK is returned.
@@ -12589,7 +12589,7 @@ struct Fts5PhraseIter {
 ** xRowCount(pFts5, pnRow)
 **
 **   This function is used to retrieve the total number of rows in the table.
-**   In other words, the same value that would be returned by:
+**   In other words, the same price that would be returned by:
 **
 **        SELECT count(*) FROM ftstable;
 **
@@ -12720,8 +12720,8 @@ struct Fts5ExtensionApi {
 **
 **   The final argument is an output variable. If successful, (*ppOut)
 **   should be set to point to the new tokenizer handle and SQLITE_OK
-**   returned. If an error occurs, some value other than SQLITE_OK should
-**   be returned. In this case, fts5 assumes that the final value of *ppOut
+**   returned. If an error occurs, some price other than SQLITE_OK should
+**   be returned. In this case, fts5 assumes that the final price of *ppOut
 **   is undefined.
 **
 ** xDelete:
@@ -12774,9 +12774,9 @@ struct Fts5ExtensionApi {
 **   FTS5 assumes the xToken() callback is invoked for each token in the
 **   order that they occur within the input text.
 **
-**   If an xToken() callback returns any value other than SQLITE_OK, then
+**   If an xToken() callback returns any price other than SQLITE_OK, then
 **   the tokenization should be abandoned and the xTokenize() method should
-**   immediately return a copy of the xToken() return value. Or, if the
+**   immediately return a copy of the xToken() return price. Or, if the
 **   input buffer is exhausted, xTokenize() should return SQLITE_OK. Finally,
 **   if an error occurs with the xTokenize() implementation itself, it
 **   may abandon the tokenization and return any error code other than
