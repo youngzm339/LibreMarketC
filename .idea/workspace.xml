@@ -21,21 +21,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70573b10-d9bd-4fa0-9eed-b7087ccbd52b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cart.c" beforeDir="false" afterPath="$PROJECT_DIR$/cart.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart.h" beforeDir="false" afterPath="$PROJECT_DIR$/cart.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.c" beforeDir="false" afterPath="$PROJECT_DIR$/menu.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/menu.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product.c" beforeDir="false" afterPath="$PROJECT_DIR$/product.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product.h" beforeDir="false" afterPath="$PROJECT_DIR$/product.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report.c" beforeDir="false" afterPath="$PROJECT_DIR$/report.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report.h" beforeDir="false" afterPath="$PROJECT_DIR$/report.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlite/sqlite3.h" beforeDir="false" afterPath="$PROJECT_DIR$/sqlite/sqlite3.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sqlite_api.c" beforeDir="false" afterPath="$PROJECT_DIR$/sqlite_api.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlite_api.h" beforeDir="false" afterPath="$PROJECT_DIR$/sqlite_api.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +97,8 @@
       <workItem from="1678607634564" duration="931000" />
       <workItem from="1678760259477" duration="6054000" />
       <workItem from="1678796429277" duration="3791000" />
-      <workItem from="1678947386424" duration="6316000" />
+      <workItem from="1678947386424" duration="7622000" />
+      <workItem from="1679034944997" duration="3075000" />
     </task>
     <servers />
   </component>

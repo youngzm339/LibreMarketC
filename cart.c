@@ -65,24 +65,21 @@ int checkoutCart(CartProduct *p, int num) {
     fprintf(stdout, "\n--END结账信息END--\n");
     fprintf(stdout, "\n输入你支付的金额：");
     double paid_money;
-    fscanf(stdin, "%lf", paid_money);
-    if (paid_money < amount) {
+    fscanf(stdin, "%lf", &paid_money);
+    if (paid_money - amount < 1e-6) {
         return -1;
     } else {
-        fprintf(stdout, "\n支付成功，应找回金额：%lf\n", amount - paid_money);
+        double return_money = paid_money - amount;
+        fprintf(stdout, "\n支付成功，应找回金额：%lf\n", return_money);
         time_t seconds;
         seconds = time(NULL);
         char str_seconds[60];
-        sscanf(str_seconds, "%ld", seconds);
+        sprintf(str_seconds, "%ld", seconds);
         char str_amount[60];
-        sscanf(str_amount, "%ld", amount);
+        sprintf(str_amount, "%lf", amount);
         char filename[128] = "saved_paid_history.txt";
         FILE *file = fopen(filename, "w+");
-        char saved_log[999] = "";
-        strcat(saved_log, str_seconds);
-        strcat(saved_log, " ");
-        strcat(saved_log, str_amount);
-        fputs(saved_log, file);
+        fprintf(file, "%s %s\n", str_seconds, str_amount);
         fclose(file);
         return 0;
     }

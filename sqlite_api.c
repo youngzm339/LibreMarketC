@@ -110,7 +110,7 @@ char *getTableName(char id[99]) {
 double getTablePrice(char id[99]) {
     selectTable(id);
     double table_price;
-    sscanf("%lf", &table_price, sql_tmp_price);
+    sscanf(sql_tmp_price, "%lf", &table_price);
     return table_price;
 }
 
